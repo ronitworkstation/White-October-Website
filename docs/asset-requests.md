@@ -12,12 +12,15 @@ Status key: ⬜ needed · 🟨 placeholder in use · ✅ received
 ## Hero
 | Slot | What | Size | Status |
 |---|---|---|---|
-| H1 | Final Hero.png (top-down handover on the logo floor mark). Used full-bleed behind the nav | 6688x3764 | ✅ received 2026-10-20 |
+| H1 | Final Hero.png (top-down handover on the logo floor mark) | 6688x3764 | ✅ received 2026-10-20; superseded by H1-wide |
+| H1-mobile | Mobile version final hero.png (tall, open floor above the people) | 3764x6688 | ✅ received 2026-10-20, in use on phones |
+| H1-wide | Outpainted one.png: the same scene with the floor and strips extended, people smaller in frame. Used on landscape screens | 6688x3764 | ✅ received 2026-10-21, in use |
 
-## Item photos now in use (placeholders from the company profile, pages 5-8)
+## Item photos now in use (from the company profile, pages 5-8; HD folder coming)
 All 22 item cards use the photos from the profile PDF (`public/images/solutions/*.webp`). Two problems before launch:
 - **Resolution:** they are 350-740px. Fine on the cards today, soft on sharp screens. Send originals or replacements at 4:5, at least 1200x1500.
-- **Other brands' work (replace, or confirm it is real WO work shown with permission):** welcome-kits (Meta), branded-merchandise (Uber), office-branding (RotoSolar), banners (Hulu billboard), standees (Sydney Airport), event-branding (UP Global stage), id-cards (Lifemed), swag-boxes (Tesla), conference-kits (Baltimore welcome kit), medals (Crystown). Awards ("K-Pop Star Awards"), plaques and name badges look like stock mockups.
+- **Decision (Aziz, 2026-10-20):** use the supplied photo folder as given, including the photos that show other brands. Approved to use.
+- **To import the HD folder:** `node scripts/import-photos.mjs "<folder>"` (matches files by item name, writes the site images, makes a contact sheet to check).
 
 ## Solution cards (home page, tall cards)
 | Slot | Family | Suggested subject | Size | Status |
@@ -52,6 +55,7 @@ All 22 item cards use the photos from the profile PDF (`public/images/solutions/
 - Canvas **1200 x 600 px**. Centre the logo and scale it until it touches **either** 1000 px wide **or** 400 px tall, whichever comes first. Padding need not be exact: the site trims it and balances every logo optically, so a long wordmark and a round crest carry the same weight.
 - Logo only: no tagline, no white box behind it, no drop shadow.
 - Name the file after the brand (`bosch.png`, `christ-university.png`) and put them in `Website/Resources/logos/`.
+- The current versions are in `Website/Resources/logos-current/` (50 PNGs + README with this spec). Import the new ones with `node scripts/import-logos.mjs`.
 
 **Please name these 4** (needed for screen-reader labels):
 - `client-f`: blue stylised "F" (row 3, column 5 in the profile grid)

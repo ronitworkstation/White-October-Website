@@ -112,12 +112,8 @@ html.lenis body {
   }
 }
 
-/* Hero entrance: headline rises from behind its line, photo settles from a slight zoom. Load only, once. */
-@keyframes rise-line {
-  from {
-    transform: translate3d(0, 105%, 0);
-  }
-}
+/* Hero entrance: eyebrow, subline and CTA rise in; the photo settles from a slight zoom. Load only, once.
+   (The headline itself is revealed line by line by SplitReveal.) */
 @keyframes rise-fade {
   from {
     opacity: 0;
@@ -128,9 +124,6 @@ html.lenis body {
   from {
     transform: scale(1.08);
   }
-}
-[data-motion="full"] .hero-line {
-  animation: rise-line 1s var(--ease-out-expo) 0.15s both;
 }
 [data-motion="full"] .hero-rise {
   animation: rise-fade 0.8s var(--ease-out-expo) 0.05s both;
@@ -149,6 +142,13 @@ html.lenis body {
   animation: none !important;
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
+}
+
+/* SplitReveal (components/motion/SplitReveal.tsx): with full motion, split text stays invisible until
+   it has been split, so it never flashes in its final position first. Without JS or with reduced motion
+   nothing is hidden. */
+[data-motion="full"] [data-split]:not([data-split-ready]) {
+  visibility: hidden;
 }
 
 /* Sideways card rows: scrollable by swipe, trackpad and the row's arrow buttons, without a visible bar. */

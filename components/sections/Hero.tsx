@@ -1,55 +1,76 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { SplitReveal } from "@/components/motion/SplitReveal";
 import { site } from "@/content/site";
 
-// Hero: full-bleed photo running up behind the see-through nav (giftative arrangement).
-// The photo's open white floor carries the eyebrow + headline at the top; the people and the
-// floor mark (square, ball, smile) stay clear in the middle. Subtext bottom-left, the one CTA bottom-right.
+// Hero: the brochure hook over the handover photo, which runs up behind the see-through nav.
+// Two framings, chosen by screen orientation (art direction: only one photo downloads):
+// - Landscape (laptops, desktops): the outpainted wide photo spans the full width. It sits on the bottom edge
+//   when the screen is taller than 16:9 (the white floor above blends into the page) and hangs from just
+//   below the top when the screen is wider, so a little empty floor is cropped at the bottom. Either way the
+//   people stay below the text. CTA bottom-right (giftative arrangement).
+// - Portrait (phones, upright tablets): text first, then the tall photo pulled up under it at its natural
+//   height. Its top 40% is empty floor, so the people always start just below the words.
 export function Hero() {
   const { hero, cta } = site;
+  const img = hero.image;
+
+  const {
+    props: { srcSet: desktopSet },
+  } = getImageProps({ alt: img.alt, ...img.desktop, sizes: "100vw" });
+  const {
+    props: { srcSet: mobileSet, ...imgProps },
+  } = getImageProps({ alt: img.alt, ...img.mobile, sizes: "100vw" });
+
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative isolate flex min-h-[640px] flex-col overflow-hidden bg-white h-[100svh] md:min-h-[680px]"
+      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-white landscape:h-[100svh] landscape:min-h-[640px]"
     >
-      <Image
-        src={hero.image.src}
-        alt={hero.image.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="hero-photo -z-10 object-cover object-[50%_60%]"
-      />
-
-      {/* Short laptop screens (1366x768): the photo has no spare height, so the headline moves up and shrinks to clear the heads */}
-      <div className="px-4 pt-[104px] md:pt-[128px] lg:pt-[136px] lg:[@media(max-height:820px)]:pt-[108px]">
-        <div className="hero-rise">
-          <Eyebrow>{hero.eyebrow}</Eyebrow>
-        </div>
-        <h1
+      {/* Landscape: not positioned, so the CTA anchors to the section's bottom-right corner and the photo
+          sits behind (-z-10). Portrait: the text is lifted above the photo that is pulled up under it.
+          Short laptop screens (1366x768): the headline moves up and shrinks so it clears the people. */}
+      <div className="px-4 pt-[108px] text-center portrait:relative portrait:z-10 md:pt-[124px] lg:pt-[120px] lg:[@media(max-height:820px)]:pt-[100px]">
+        {/* Reason: the hook is the page's first promise; it lands line by line before anything else moves */}
+        <SplitReveal
+          as="h1"
           id="hero-title"
-          className="mx-auto mt-3 overflow-hidden pb-[0.08em] text-center text-[48px] font-bold leading-[0.98] tracking-[-0.025em] text-ink sm:text-[68px] md:mt-4 lg:text-[88px] xl:text-[96px] lg:[@media(max-height:820px)]:text-[72px]"
+          trigger="load"
+          delay={0.15}
+          className="mx-auto max-w-[1240px] text-[38px] font-light leading-[1.04] tracking-[-0.025em] text-ink sm:text-[52px] md:text-[54px] lg:text-[72px] xl:text-[84px] lg:[@media(max-height:820px)]:text-[64px]"
         >
-          <span className="hero-line block">
-            {/* Phones break as "More than / the gift." so the key words never strand */}
-            <span className="block font-light sm:inline">More than </span>
-            <span className="whitespace-nowrap">
-              the gift<span className="text-orange-ink">.</span>
-            </span>
+          <span className="md:block">{hero.headline.lineOne} </span>
+          <span className="md:block">
+            {hero.headline.lineTwo}{" "}
+            <span className="whitespace-nowrap font-bold text-orange-ink">{hero.headline.accent}</span>
           </span>
-        </h1>
+        </SplitReveal>
+        <p className="hero-rise-late mx-auto mt-4 max-w-[34ch] text-[17px] leading-snug text-grey-ink md:mt-5 md:text-[21px]">
+          {hero.subline}
+        </p>
+        <div className="hero-rise-late mt-6 flex justify-center landscape:absolute landscape:bottom-8 landscape:right-6 landscape:mt-0 md:landscape:right-8 lg:landscape:bottom-10 lg:landscape:right-12">
+          <ButtonLink href={cta.href} size="lg">
+            {cta.label}
+            <ArrowRight size={18} weight="bold" className="transition-transform duration-300 group-hover/btn:translate-x-1" />
+          </ButtonLink>
+        </div>
       </div>
 
-      <div className="mt-auto flex flex-col items-start gap-4 px-4 pb-6 sm:flex-row sm:items-end sm:justify-between sm:gap-6 md:px-8 md:pb-8 lg:px-12 lg:pb-10">
-        <p className="hero-rise-late max-w-[380px] rounded-[20px] bg-white/85 px-5 py-4 text-[16px] leading-snug text-ink backdrop-blur-md md:text-[17px]">
-          {hero.subtext}
-        </p>
-        <ButtonLink href={cta.href} size="lg" className="hero-rise-late">
-          {cta.label}
-          <ArrowRight size={18} weight="bold" className="transition-transform duration-300 group-hover/btn:translate-x-1" />
-        </ButtonLink>
+      {/* 56.28vw = the wide photo's height at full width (3840x2161). The top edge fades out so the photo's slightly
+          greyer corner never shows a seam against the white page. */}
+      <div className="relative -mt-[71vw] min-h-[178vw] flex-1 landscape:absolute landscape:inset-x-0 landscape:top-[max(48px,calc(100%-56.28vw))] landscape:-z-10 landscape:mt-0 landscape:aspect-[3840/2161] landscape:min-h-0 landscape:flex-none landscape:[mask-image:linear-gradient(to_bottom,transparent,#000_12%)]">
+        <picture>
+          <source media="(orientation: landscape)" srcSet={desktopSet} sizes="100vw" />
+          <img
+            {...imgProps}
+            srcSet={mobileSet}
+            alt={img.alt}
+            fetchPriority="high"
+            loading="eager"
+            className="hero-photo absolute inset-0 h-full w-full object-cover object-[50%_100%]"
+          />
+        </picture>
       </div>
     </section>
   );

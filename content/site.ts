@@ -39,26 +39,38 @@ export const site = {
   cta: { label: "Send a Quote", href: "/quote" },
 
   hero: {
-    eyebrow: "Corporate gifts, print and branding",
-    // Option A (brand line). Option B kept for checkpoint 1.
-    headline: "More than the gift.",
-    subtext: "People forget the object. They remember how it made them feel. We design for the feeling.",
-    alt: {
-      headline: "Why chase 10 vendors? Call one.",
-      subtext: "Gifts, awards, print and event branding, made in-house and delivered across India.",
-    },
+    // Brochure page 1, word for word. Desktop breaks after "vendors"; "call us?" is the bold orange accent.
+    // (No eyebrow: the search keywords live in the page title and description.)
+    headline: { lineOne: "Why chase 10 vendors", lineTwo: "when you can just", accent: "call us?" },
+    subline: "Everything you need. One partner. Zero hassle.",
     image: {
-      src: "/images/hero-final.jpg",
       alt: "Seen from above, one colleague hands another a black gift box tied with an orange ribbon, standing on a floor mark shaped like the White October logo",
+      // Landscape screens: Aziz's outpainted wide version (floor and strips extended on every side).
+      desktop: { src: "/images/hero-desktop.jpg", width: 3840, height: 2161 },
+      // Phones and upright tablets: the tall version with open floor above the people for the headline.
+      mobile: { src: "/images/hero-mobile.jpg", width: 2000, height: 3554 },
     },
   },
 
-  // Real numbers only (brochure). Add more only when Medhansh confirms them.
-  numbers: [
-    { value: 20, suffix: "+", label: "years" },
-    { value: 50, suffix: "+", label: "industries" },
-    { value: 50, suffix: "+", label: "brands trusted us" },
-  ],
+  // "Why White October" (Benzai10 layout): one statement, then a row of real facts.
+  // Sources: profile p2 (moments of recognition), p3 (consultation, pan-India delivery), p9 (in-house
+  // printing and customisation facility); brochure (20+ years, 50+ industries); profile p11 (logo wall).
+  // Draft copy: Medhansh approves before launch. Add numbers only when he confirms them.
+  whyUs: {
+    label: "Why White October",
+    statement: {
+      before: "White October designs",
+      emphasis: "moments of recognition",
+      after:
+        ": the gifts, awards, print and event branding companies give their people. Beyond the product, we bring personal consultation, our own in-house printing and customisation, and reliable pan-India delivery, so every piece carries your brand the way you meant it.",
+    },
+    facts: [
+      { value: 20, suffix: "+", label: "Years in business" },
+      { value: 50, suffix: "+", label: "Industries served" },
+      { value: 50, suffix: "+", label: "Brands that trust us" },
+      { text: "In-house", label: "Printing and customisation" },
+    ] as ({ value: number; suffix: string; label: string } | { text: string; label: string })[],
+  },
 
   clients: {
     eyebrow: "Trusted by 50+ brands across India",

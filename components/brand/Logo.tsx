@@ -26,7 +26,7 @@ export function Logo({
       alt="White October"
       width={Math.round((f.w / f.h) * height)}
       height={height}
-      priority={priority}
+      preload={priority}
       unoptimized
       className={className}
     />

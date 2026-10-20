@@ -1,7 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { Solutions } from "@/components/sections/Solutions";
 import { Clients } from "@/components/sections/Clients";
-import { VendorsHook } from "@/components/sections/VendorsHook";
+import { WhyUs } from "@/components/sections/WhyUs";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Hero />
       <Solutions />
       <Clients />
-      <VendorsHook />
+      <WhyUs />
     </>
   );
 }

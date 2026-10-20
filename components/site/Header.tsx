@@ -66,8 +66,15 @@ export function Header() {
             scrolled ? "border-ink bg-white" : "border-transparent bg-transparent"
           }`}
         >
-          <Link href="/" aria-label="White October home" className="shrink-0">
-            <Logo variant="landscape-black" height={38} priority />
+          {/* Portrait logo: full size on the hero's white floor, scaled into the pill once the page moves */}
+          <Link href="/" aria-label="White October home" className="relative block h-[60px] w-[53px] shrink-0 md:h-[84px] md:w-[74px]">
+            <span
+              className={`absolute inset-0 origin-left transition-transform duration-500 ease-out-expo ${
+                scrolled ? "scale-[0.85] md:scale-[0.62]" : ""
+              }`}
+            >
+              <Logo variant="portrait-black" height={84} priority className="h-full w-auto" />
+            </span>
           </Link>
 
           <nav aria-label="Main" className="hidden lg:block">
@@ -165,7 +172,7 @@ export function Header() {
         }`}
       >
         <div className="flex h-[88px] items-center justify-between px-6">
-          <Logo variant="landscape-white" height={36} />
+          <Logo variant="portrait-white" height={56} />
           <button
             type="button"
             onClick={() => setMenuOpen(false)}

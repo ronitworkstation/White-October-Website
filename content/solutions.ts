@@ -9,13 +9,15 @@ export type Solution = {
   titleRest: string;
   short: string;
   summary: string;
-  cardImage?: string;
+  /** Photo on the tilted thumbnail in the home Solutions list */
+  cover: string;
   items: SolutionItem[];
 };
 
 export const solutions: Solution[] = [
   {
     slug: "corporate-gifting",
+    cover: "/images/solutions/premium-gift-hampers.webp",
     titleBold: "Corporate",
     titleRest: "Gifting",
     short: "Hampers, executive gifts, welcome kits and branded merchandise.",
@@ -31,6 +33,7 @@ export const solutions: Solution[] = [
   },
   {
     slug: "recognition",
+    cover: "/images/solutions/trophies.webp",
     titleBold: "Recognition",
     titleRest: "Solutions",
     short: "Awards, trophies, medals, plaques and name badges.",
@@ -45,6 +48,7 @@ export const solutions: Solution[] = [
   },
   {
     slug: "event-branding",
+    cover: "/images/solutions/lanyards.webp",
     titleBold: "Event &",
     titleRest: "Branding",
     short: "ID cards, lanyards, banners, standees and conference kits.",
@@ -60,6 +64,7 @@ export const solutions: Solution[] = [
   },
   {
     slug: "build-for-you",
+    cover: "/images/solutions/swag-boxes.webp",
     titleBold: "Built",
     titleRest: "For You",
     short: "Personalised merch, swag boxes, custom packaging and festive kits.",

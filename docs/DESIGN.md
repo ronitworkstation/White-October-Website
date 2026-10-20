@@ -27,7 +27,7 @@ Nothing else. Client logos and photos are the only place other hues appear.
 ## Type
 - **Outfit** (free Gilroy stand-in, chosen in the font lab 2026-10-20; swap to real Gilroy by changing `app/fonts.ts`).
   Headings use the profile's **Bold + Regular pairing** ("**Recognition** Solutions"). Body 18px / 1.6, measure 65ch.
-- **Antonio Bold** for display: big numerals (01-04), statements, the footer.
+- **Antonio Bold** for display: big numerals (01-04, 001-004), solution row titles in uppercase (Indigram reference), the footer.
 - Scale: 1.25. Display clamps: hero 44-88px, section heads 36-64px.
 - No em dashes anywhere in copy.
 
@@ -51,7 +51,23 @@ Interactive elements carry a 2px ink border on light (white on dark). Shadowless
 - Easing default: `cubic-bezier(0.16, 1, 0.3, 1)` (expo out). Durations 0.4-0.9s.
 
 ## Section rhythm (home)
-full-bleed photo hero (nav see-through on top of it), light solutions (black profile cards), **dark** clients, light hook, **dark** story/process (pinned 3D), light bento, grey industries, **dark** experience centre, light FAQ, **dark** footer.
+white hero (brochure hook over the handover photo, nav see-through on top), light solutions list (rows open into black profile cards), **dark** clients, **panel** Why White October (statement + facts), **dark** story/process (pinned 3D), grey industries, **dark** experience centre, light FAQ, **dark** footer.
+
+Eyebrow budget (max 4 on the home page): clients, Why White October (plain label with the tilted orange square), FAQ. The hero has none (Aziz, 2026-10-21): its search keywords live in the page title and description.
+
+## Motion catalogue (every animation has a reason)
+Identity: one curve (expo out, `EASE` in `lib/gsap.ts`), three durations (0.3 / 0.6 / 0.9s), one entrance (lines rise out of a mask). Staggers stay under 0.5s. GSAP plugins are registered once in `lib/gsap.ts`; text splitting is `components/motion/SplitReveal.tsx` (SplitText, autoSplit, aria auto, hidden until split only under full motion).
+| Where | What | Why |
+|---|---|---|
+| Hero headline | lines rise on load | the page's first promise lands before anything else moves |
+| Hero eyebrow, subline, CTA, photo | fade-rise, photo settles from 1.08 | supporting layers follow the headline |
+| Header | pill fills white and the portrait logo scales 1 → 0.62 on scroll | keeps the brand present without crowding the content |
+| "Our Solutions" heading | words rise on entry | marks the start of the pitch |
+| Solutions rows | tile straightens on hover/focus/open; panel grows, cards fade up; arrow turns down | the cards read as coming out of the row clicked |
+| Why White October statement | words brighten from 18% as you scroll (scrub) | sets the reading pace for the page's argument |
+| Facts row | numbers count up, dividers draw | the proof gets its own moment |
+| Client marquee | two rows drift, pause on hover | proof in motion without demanding attention |
+Reduced motion (`<html data-motion="reduce">`): no splitting, no scrubbing, counters show final values, panels open instantly.
 
 ## Where we overrode the taste skill (references win)
 - Alternating light/dark chambers instead of a single page theme (Wispr reference).
