@@ -1,20 +1,21 @@
 "use client";
 
-import { ReactLenis, type LenisRef } from "lenis/react";
+import { ReactLenis, useLenis } from "lenis/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
 // Lenis smooth scroll, driven by GSAP's ticker so ScrollTrigger pins and Lenis never disagree on scroll position.
 // Reduced motion: native scrolling.
+// lenis/react creates the instance in its own effect, so it is read with useLenis() (re-renders once it exists).
+// Reading a ref in a mount-only effect sees nothing, the ticker never starts, and the wheel stops working.
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const ref = useRef<LenisRef>(null);
+  const lenis = useLenis();
 
   useEffect(() => {
-    const lenis = ref.current?.lenis;
     if (!lenis) return;
     if (prefersReducedMotion()) {
       lenis.options.smoothWheel = false;
@@ -27,11 +28,11 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       gsap.ticker.remove(tick);
       lenis.off("scroll", ScrollTrigger.update);
     };
-  }, []);
+  }, [lenis]);
 
   return (
     <>
-      <ReactLenis root ref={ref} options={{ autoRaf: false, lerp: 0.1, anchors: { offset: -96 } }} />
+      <ReactLenis root options={{ autoRaf: false, lerp: 0.1, anchors: { offset: -96 } }} />
       {children}
     </>
   );
