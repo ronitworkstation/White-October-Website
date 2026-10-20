@@ -1,0 +1,302 @@
+[
+ {
+  "slug": "surtec",
+  "w": 107,
+  "h": 107,
+  "srcPx": "107x107"
+ },
+ {
+  "slug": "bechem",
+  "w": 124,
+  "h": 94,
+  "srcPx": "124x94"
+ },
+ {
+  "slug": "hdfc-bank",
+  "w": 114,
+  "h": 126,
+  "srcPx": "114x126"
+ },
+ {
+  "slug": "target",
+  "w": 103,
+  "h": 140,
+  "srcPx": "132x180"
+ },
+ {
+  "slug": "jiohotstar",
+  "w": 222,
+  "h": 59,
+  "srcPx": "222x59"
+ },
+ {
+  "slug": "bread-financial",
+  "w": 292,
+  "h": 94,
+  "srcPx": "292x94"
+ },
+ {
+  "slug": "united-healthcare",
+  "w": 240,
+  "h": 75,
+  "srcPx": "240x75"
+ },
+ {
+  "slug": "jw-marriott",
+  "w": 183,
+  "h": 77,
+  "srcPx": "183x77"
+ },
+ {
+  "slug": "lululemon",
+  "w": 140,
+  "h": 140,
+  "srcPx": "147x147"
+ },
+ {
+  "slug": "inquisitive-digital",
+  "w": 181,
+  "h": 62,
+  "srcPx": "181x62"
+ },
+ {
+  "slug": "hdfc-life",
+  "w": 121,
+  "h": 78,
+  "srcPx": "121x78"
+ },
+ {
+  "slug": "marriott",
+  "w": 123,
+  "h": 97,
+  "srcPx": "123x97"
+ },
+ {
+  "slug": "ageas-federal-life",
+  "w": 255,
+  "h": 84,
+  "srcPx": "255x84"
+ },
+ {
+  "slug": "tvs",
+  "w": 178,
+  "h": 106,
+  "srcPx": "178x106"
+ },
+ {
+  "slug": "canara-bank",
+  "w": 170,
+  "h": 135,
+  "srcPx": "170x135"
+ },
+ {
+  "slug": "tresvista",
+  "w": 131,
+  "h": 59,
+  "srcPx": "131x59"
+ },
+ {
+  "slug": "essae",
+  "w": 202,
+  "h": 94,
+  "srcPx": "202x94"
+ },
+ {
+  "slug": "coverself",
+  "w": 360,
+  "h": 67,
+  "srcPx": "360x67"
+ },
+ {
+  "slug": "pocket-fm",
+  "w": 92,
+  "h": 101,
+  "srcPx": "92x101"
+ },
+ {
+  "slug": "delhi-public-school",
+  "w": 111,
+  "h": 140,
+  "srcPx": "120x151"
+ },
+ {
+  "slug": "aptean",
+  "w": 144,
+  "h": 41,
+  "srcPx": "144x41"
+ },
+ {
+  "slug": "eltai",
+  "w": 220,
+  "h": 82,
+  "srcPx": "220x82"
+ },
+ {
+  "slug": "epsilon",
+  "w": 311,
+  "h": 87,
+  "srcPx": "311x87"
+ },
+ {
+  "slug": "traana",
+  "w": 115,
+  "h": 106,
+  "srcPx": "115x106"
+ },
+ {
+  "slug": "client-f",
+  "w": 160,
+  "h": 140,
+  "srcPx": "351x307"
+ },
+ {
+  "slug": "lilly",
+  "w": 252,
+  "h": 140,
+  "srcPx": "254x141"
+ },
+ {
+  "slug": "stixis",
+  "w": 173,
+  "h": 57,
+  "srcPx": "173x57"
+ },
+ {
+  "slug": "renaissance",
+  "w": 289,
+  "h": 140,
+  "srcPx": "460x223"
+ },
+ {
+  "slug": "zeomega",
+  "w": 407,
+  "h": 82,
+  "srcPx": "407x82"
+ },
+ {
+  "slug": "client-pica",
+  "w": 129,
+  "h": 115,
+  "srcPx": "129x115"
+ },
+ {
+  "slug": "nu-hospitals",
+  "w": 140,
+  "h": 140,
+  "srcPx": "160x160"
+ },
+ {
+  "slug": "mathco",
+  "w": 205,
+  "h": 49,
+  "srcPx": "205x49"
+ },
+ {
+  "slug": "pes-university",
+  "w": 199,
+  "h": 91,
+  "srcPx": "199x91"
+ },
+ {
+  "slug": "jgi",
+  "w": 100,
+  "h": 98,
+  "srcPx": "100x98"
+ },
+ {
+  "slug": "client-crest",
+  "w": 140,
+  "h": 140,
+  "srcPx": "167x167"
+ },
+ {
+  "slug": "motmans",
+  "w": 174,
+  "h": 25,
+  "srcPx": "174x25"
+ },
+ {
+  "slug": "ansr",
+  "w": 196,
+  "h": 73,
+  "srcPx": "196x73"
+ },
+ {
+  "slug": "burlington-english",
+  "w": 98,
+  "h": 104,
+  "srcPx": "98x104"
+ },
+ {
+  "slug": "hackculture",
+  "w": 154,
+  "h": 21,
+  "srcPx": "154x21"
+ },
+ {
+  "slug": "st-josephs-university",
+  "w": 143,
+  "h": 137,
+  "srcPx": "143x137"
+ },
+ {
+  "slug": "christ-university",
+  "w": 236,
+  "h": 97,
+  "srcPx": "236x97"
+ },
+ {
+  "slug": "st-lawrence-college",
+  "w": 239,
+  "h": 140,
+  "srcPx": "283x166"
+ },
+ {
+  "slug": "the-hindu",
+  "w": 313,
+  "h": 140,
+  "srcPx": "322x144"
+ },
+ {
+  "slug": "247-ai",
+  "w": 165,
+  "h": 47,
+  "srcPx": "165x47"
+ },
+ {
+  "slug": "bosch",
+  "w": 618,
+  "h": 140,
+  "srcPx": "985x223"
+ },
+ {
+  "slug": "bata",
+  "w": 212,
+  "h": 52,
+  "srcPx": "212x52"
+ },
+ {
+  "slug": "chem-trend",
+  "w": 155,
+  "h": 66,
+  "srcPx": "155x66"
+ },
+ {
+  "slug": "courtyard-marriott",
+  "w": 256,
+  "h": 41,
+  "srcPx": "256x41"
+ },
+ {
+  "slug": "kluber-lubrication",
+  "w": 306,
+  "h": 109,
+  "srcPx": "306x109"
+ },
+ {
+  "slug": "insenses",
+  "w": 113,
+  "h": 42,
+  "srcPx": "113x42"
+ }
+]
