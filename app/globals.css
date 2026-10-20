@@ -150,3 +150,11 @@ html.lenis body {
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
 }
+
+/* Sideways card rows: scrollable by swipe, trackpad and the row's arrow buttons, without a visible bar. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

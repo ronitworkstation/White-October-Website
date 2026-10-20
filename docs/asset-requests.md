@@ -12,8 +12,12 @@ Status key: ⬜ needed · 🟨 placeholder in use · ✅ received
 ## Hero
 | Slot | What | Size | Status |
 |---|---|---|---|
-| H1 | Image 01 (cream box + hands) with the **logo corrected**: square tilted as in the real mark. Easiest: place `public/brand/logo-portrait-black.svg` on the box with Perspective Warp in Photoshop | full res (current 6688x3764 is fine) | 🟨 uncorrected version in use |
-| H1-wide | Optional: the same image extended left/right to 21:9 with Generative Expand, so the hands are not cropped on wide screens | 21:9 | ⬜ optional |
+| H1 | Final Hero.png (top-down handover on the logo floor mark). Used full-bleed behind the nav | 6688x3764 | ✅ received 2026-10-20 |
+
+## Item photos now in use (placeholders from the company profile, pages 5-8)
+All 22 item cards use the photos from the profile PDF (`public/images/solutions/*.webp`). Two problems before launch:
+- **Resolution:** they are 350-740px. Fine on the cards today, soft on sharp screens. Send originals or replacements at 4:5, at least 1200x1500.
+- **Other brands' work (replace, or confirm it is real WO work shown with permission):** welcome-kits (Meta), branded-merchandise (Uber), office-branding (RotoSolar), banners (Hulu billboard), standees (Sydney Airport), event-branding (UP Global stage), id-cards (Lifemed), swag-boxes (Tesla), conference-kits (Baltimore welcome kit), medals (Crystown). Awards ("K-Pop Star Awards"), plaques and name badges look like stock mockups.
 
 ## Solution cards (home page, tall cards)
 | Slot | Family | Suggested subject | Size | Status |
@@ -39,10 +43,16 @@ Status key: ⬜ needed · 🟨 placeholder in use · ✅ received
 ## Experience centre
 | Slot | What | Status |
 |---|---|---|
-| E1 | The original hi-res photo of the showroom (profile page 12) | ⬜ |
+| E1 | The original hi-res photo of the showroom (profile page 12) | ✅ extracted from the profile at 2449x1633 (`public/images/experience-centre.jpg`) |
 | E2-E3 | Optional: entrance / signage, a customer browsing, the print or engraving setup | ⬜ |
 
 ## Client logos (extracted from the profile; see /#clients)
+**Spec for replacement logos (one file per brand):**
+- PNG with a **transparent background**, in the logo's **original colours** (it shows in colour on a white tile on hover).
+- Canvas **1200 x 600 px**. Centre the logo and scale it until it touches **either** 1000 px wide **or** 400 px tall, whichever comes first. Padding need not be exact: the site trims it and balances every logo optically, so a long wordmark and a round crest carry the same weight.
+- Logo only: no tagline, no white box behind it, no drop shadow.
+- Name the file after the brand (`bosch.png`, `christ-university.png`) and put them in `Website/Resources/logos/`.
+
 **Please name these 4** (needed for screen-reader labels):
 - `client-f`: blue stylised "F" (row 3, column 5 in the profile grid)
 - `client-pica`: round emblem with "PICA"-style letters (row 3, column 10)

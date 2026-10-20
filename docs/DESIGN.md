@@ -51,7 +51,7 @@ Interactive elements carry a 2px ink border on light (white on dark). Shadowless
 - Easing default: `cubic-bezier(0.16, 1, 0.3, 1)` (expo out). Durations 0.4-0.9s.
 
 ## Section rhythm (home)
-light hero, **dark** clients, light hook, light solutions, **dark** story/process (pinned 3D), light bento, grey industries, **dark** experience centre, light FAQ, **dark** footer.
+full-bleed photo hero (nav see-through on top of it), light solutions (black profile cards), **dark** clients, light hook, **dark** story/process (pinned 3D), light bento, grey industries, **dark** experience centre, light FAQ, **dark** footer.
 
 ## Where we overrode the taste skill (references win)
 - Alternating light/dark chambers instead of a single page theme (Wispr reference).

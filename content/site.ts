@@ -47,7 +47,10 @@ export const site = {
       headline: "Why chase 10 vendors? Call one.",
       subtext: "Gifts, awards, print and event branding, made in-house and delivered across India.",
     },
-    image: { src: "/images/hero-01.jpg", alt: "Two people passing a White October gift box between them" },
+    image: {
+      src: "/images/hero-final.jpg",
+      alt: "Seen from above, one colleague hands another a black gift box tied with an orange ribbon, standing on a floor mark shaped like the White October logo",
+    },
   },
 
   // Real numbers only (brochure). Add more only when Medhansh confirms them.

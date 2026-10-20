@@ -23,6 +23,12 @@ export function Header() {
     setHidden(past && direction === 1 && !menuOpen && !solOpen);
   });
 
+  // A reload can restore the page mid-scroll before Lenis emits anything: start from the real position.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setScrolled(window.scrollY > 24));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   useEffect(() => {
     if (menuOpen) lenis?.stop();
     else lenis?.start();
@@ -54,8 +60,10 @@ export function Header() {
         }`}
       >
         <div
-          className={`mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 rounded-full border-2 border-ink pl-5 pr-2 transition-colors duration-300 md:pl-6 ${
-            scrolled ? "bg-white" : "bg-white/85 backdrop-blur-md"
+          // At the top the pill dissolves into the hero photo (logo and links sit straight on its white floor);
+          // once the page moves it becomes a solid white pill again, so it reads over any section.
+          className={`mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 rounded-full border-2 pl-5 pr-2 transition-[background-color,border-color] duration-500 ease-out-expo md:pl-6 ${
+            scrolled ? "border-ink bg-white" : "border-transparent bg-transparent"
           }`}
         >
           <Link href="/" aria-label="White October home" className="shrink-0">

@@ -8,7 +8,7 @@
 | Must-have | Accept test | Status |
 |---|---|---|
 | Header | At 1024 and 1440px: logo left, nav one line centred, "Send a Quote" right. At 375px: menu button opens a full-screen menu | built, checked 1440 + 375 |
-| Hero | At 1366x768 and 375x667: headline (max 2 lines), subtext (max 20 words) and CTA visible without scrolling; image 01 with the corrected logo | built; logo correction pending (H1) |
+| Hero | At 1366x768 and 375x667: headline (max 2 lines), subtext (max 20 words) and CTA visible without scrolling; image 01 with the corrected logo | rebuilt full-bleed with Final Hero.png, nav see-through on top (2026-10-20); 1440 + 375 checked |
 | Client logos | All 50 present; idle grey; hover, keyboard focus and tap show original colours + orange glow; marquee pauses on hover | built, hover checked |
 | Chambers | Sections alternate light/dark with 64px (desktop) / 32px (mobile) curved tops | in progress |
 | Palette lock | No hue outside orange, black, white, grey (+ orange tints) except in logos and photos | enforced by wiping Tailwind's palette |
@@ -16,6 +16,7 @@
 | Footer | Big contact block; giant cropped mark smiles when it scrolls into view; small wordmark | built (2D smile); 3D in phase 3 |
 | Logo intro | First visit only, max 1.2s, skippable, absent under reduced motion; hero image loads behind it | phase 2 |
 | Quote form | Validation; test submission shows success and emails aziz998787@gmail.com; error state when offline; WhatsApp opens wa.me prefilled | phase 4 |
+| Home solutions | 4 family rows, 22 profile-style cards, arrows + swipe, placed before the client logos | built 2026-10-20; photos are profile placeholders |
 | Solution pages | 4 pages; 6 / 5 / 6 / 5 items as in the profile; no prices or SKUs | phase 4 |
 | 3D | Gift-box story + footer mark in one canvas; WebGL off or reduced motion → complete static version | phase 3 |
 | Smoothness | Lenis + GSAP, transform/opacity only; meets success metrics | Lenis wired to GSAP ticker |
