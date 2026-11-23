@@ -76,6 +76,43 @@ export const site = {
     eyebrow: "Trusted by 50+ brands across India",
   },
 
+  // Process: four steps. DRAFT lines built only from facts already in the profile (personal consultation,
+  // in-house printing and customisation, pan-India delivery). Medhansh approves or rewrites before launch.
+  process: {
+    label: "How it works",
+    title: { bold: "Four steps,", rest: "one partner." },
+    steps: [
+      { title: "Understand", line: "A personal consultation about your brand, your people and the occasion." },
+      { title: "Curate", line: "We shortlist pieces from our four solution families to fit the brief." },
+      { title: "Customize", line: "Printing and customisation happen in-house, so every piece carries your brand." },
+      { title: "Deliver", line: "Reliable delivery across India, to your door or your team's." },
+    ],
+  },
+
+  // Experience centre: photo is public/images/experience-centre.jpg (profile p12). Opening hours: TODO from Medhansh.
+  experience: {
+    label: "Experience Centre",
+    title: { bold: "See it", rest: "in person." },
+    line: "Visit our experience centre in Jayanagar to see and handle the work before you decide.",
+    photo: { src: "/images/experience-centre.jpg", width: 2400, height: 1600, alt: "The White October experience centre in Jayanagar, Bengaluru" },
+  },
+
+  // FAQ: questions come from docs/asset-requests.md. Answers stay unpublished until Medhansh confirms the facts.
+  faq: {
+    label: "FAQ",
+    title: { bold: "Questions", rest: "we get asked." },
+    pending: "We are confirming this detail. Message us on WhatsApp and we will answer straight away.",
+    items: [
+      { q: "What is the minimum order quantity?", a: "" },
+      { q: "How long does an order take?", a: "" },
+      { q: "Can you handle rush orders?", a: "" },
+      { q: "Can we see a sample or mock-up first?", a: "" },
+      { q: "Do you deliver across India?", a: "" },
+      { q: "Do you provide GST invoices?", a: "" },
+      { q: "How do you customise products?", a: "" },
+    ] as { q: string; a: string }[],
+  },
+
   footer: {
     lead: "Let's create experiences that people remember.",
   },

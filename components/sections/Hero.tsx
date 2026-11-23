@@ -2,7 +2,9 @@ import { getImageProps } from "next/image";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
 import { SplitReveal } from "@/components/motion/SplitReveal";
+import Link from "next/link";
 import { site } from "@/content/site";
+import { solutions } from "@/content/solutions";
 
 // Hero: the brochure hook over the handover photo, which runs up behind the see-through nav.
 // Two framings, chosen by screen orientation (art direction: only one photo downloads):
@@ -72,6 +74,26 @@ export function Hero() {
           />
         </picture>
       </div>
+
+      {/* The four solution families, laid over the bottom edge of the photo: the first thing a buyer can act on.
+          Landscape: bottom-left (the quote CTA holds bottom-right). Portrait: a 2x2 block at the bottom. */}
+      <nav
+        aria-label="Solutions"
+        className="hero-rise-late absolute inset-x-4 bottom-4 z-10 grid grid-cols-2 gap-2 md:inset-x-8 md:bottom-8 landscape:right-auto landscape:flex landscape:max-w-[calc(100%-300px)] landscape:flex-wrap lg:inset-x-12 lg:bottom-10"
+      >
+        {solutions.map((s, i) => (
+          <Link
+            key={s.slug}
+            href={`/solutions/${s.slug}`}
+            className="group/chip flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-2.5 text-[14px] font-semibold leading-tight text-ink transition-colors duration-300 hover:bg-ink hover:text-white md:text-[15px]"
+          >
+            <span aria-hidden className="font-display text-[13px] text-grey transition-colors group-hover/chip:text-orange">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            {s.titleBold} {s.titleRest}
+          </Link>
+        ))}
+      </nav>
     </section>
   );
 }

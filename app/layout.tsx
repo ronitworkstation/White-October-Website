@@ -16,6 +16,26 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "White October",
+    images: [{ url: "/images/hero-desktop.jpg", width: 3840, height: 2161, alt: "White October: one colleague hands another a gift box" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/images/hero-desktop.jpg"] },
+};
+
+// LocalBusiness structured data. Only facts already in content/site.ts; sameAs/opening hours stay out until confirmed.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: site.name,
+  url: site.url,
+  telephone: site.contact.phoneDisplay,
+  image: `${site.url}/images/hero-desktop.jpg`,
+  slogan: site.tagline,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "#37, UDBHAV@678, 2nd Floor, 11th Main Rd, 4th Block, Jayanagar",
+    addressLocality: "Bengaluru",
+    postalCode: "560011",
+    addressCountry: "IN",
   },
 };
 
@@ -34,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: motionScript }} />
       </head>
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

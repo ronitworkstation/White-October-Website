@@ -18,8 +18,8 @@ export default function Primitives() {
           <ButtonLink href="#" variant="outline" size="lg">Outline</ButtonLink>
         </div>
         <div className="grid max-w-3xl grid-cols-2 gap-4">
-          <Plinth src="/images/solutions/trophies.webp" width={480} height={600} />
-          <Plinth src="/images/solutions/awards.webp" width={480} height={600} tone="dark" />
+          <Plinth src="/images/solutions/trophies.webp" />
+          <Plinth src="/images/solutions/awards.webp" tone="dark" />
         </div>
       </section>
       <section className="chamber-top bg-black px-8 py-16 text-white">

@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  // The old WordPress placeholder page
+  async redirects() {
+    return [{ source: "/hello-world", destination: "/", permanent: true }];
+  },
   turbopack: {
     rules: {
       "*.css": {
