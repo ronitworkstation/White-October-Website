@@ -24,11 +24,11 @@ export const solutions: Solution[] = [
     summary: "Gifts curated around your brand and the people receiving them, from first-day welcome kits to year-end hampers.",
     items: [
       { name: "Premium Gift Hampers", line: "Curated hampers for clients, partners and festive moments.", image: "/images/solutions/premium-gift-hampers.webp" },
-      { name: "Executive Gifts", line: "Considered gifts for leadership, clients and milestones.", image: "/images/solutions/executive-gifts.webp" },
+      { name: "Executive Gifts", line: "Gifts for leadership, clients and milestones.", image: "/images/solutions/executive-gifts.webp" },
       { name: "Welcome Kits", line: "First-day kits that make new joiners feel expected.", image: "/images/solutions/welcome-kits.webp" },
       { name: "Lifestyle & Utility Products", boldWords: 3, line: "Bottles, bags, desk sets and everyday pieces people keep using.", image: "/images/solutions/lifestyle-utility-products.webp" },
-      { name: "Branded Merchandise", line: "Apparel and merch that carries your brand well.", image: "/images/solutions/branded-merchandise.webp" },
-      { name: "Office Branding", line: "Your identity carried across the workspace.", image: "/images/solutions/office-branding.webp" },
+      { name: "Branded Merchandise", line: "Apparel and merch with your brand on it.", image: "/images/solutions/branded-merchandise.webp" },
+      { name: "Office Branding", line: "Your branding across the workspace.", image: "/images/solutions/office-branding.webp" },
     ],
   },
   {
@@ -74,7 +74,7 @@ export const solutions: Solution[] = [
       { name: "Swag Boxes", line: "Boxes for launches, communities and campaigns.", image: "/images/solutions/swag-boxes.webp" },
       { name: "Custom Packaging", line: "Packaging designed for the moment it's opened.", image: "/images/solutions/custom-packaging.webp" },
       { name: "Festive Kits", line: "Kits for Diwali, New Year and the occasions you celebrate.", image: "/images/solutions/festive-kits.webp" },
-      { name: "Occasional Kits", line: "Kits built for one-off moments and milestones.", image: "/images/solutions/occasional-kits.webp" },
+      { name: "Occasional Kits", line: "Kits built for one-off occasions.", image: "/images/solutions/occasional-kits.webp" },
     ],
   },
 ];

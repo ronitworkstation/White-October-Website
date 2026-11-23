@@ -59,10 +59,10 @@ export const site = {
   whyUs: {
     label: "Why White October",
     statement: {
-      before: "White October designs",
-      emphasis: "moments of recognition",
+      before: "White October makes",
+      emphasis: "the gifts, awards, print and event branding",
       after:
-        ": the gifts, awards, print and event branding companies give their people. Beyond the product, we bring personal consultation, our own in-house printing and customisation, and reliable pan-India delivery, so every piece carries your brand the way you meant it.",
+        " that companies give their people. Beyond the product, we bring personal consultation, our own in-house printing and customisation, and reliable pan-India delivery, so every piece carries your brand the way you meant it.",
     },
     facts: [
       { value: 20, suffix: "+", label: "Years in business" },
@@ -85,7 +85,7 @@ export const site = {
       { title: "Understand", line: "A personal consultation about your brand, your people and the occasion." },
       { title: "Curate", line: "We shortlist pieces from our four solution families to fit the brief." },
       { title: "Customize", line: "Printing and customisation happen in-house, so every piece carries your brand." },
-      { title: "Deliver", line: "Reliable delivery across India, to your door or your team's." },
+      { title: "Deliver", line: "We deliver across India." },
     ],
   },
 
@@ -114,7 +114,7 @@ export const site = {
   },
 
   footer: {
-    lead: "Let's create experiences that people remember.",
+    lead: "Tell us what you need. We will take it from there.",
   },
 } as const;
 
