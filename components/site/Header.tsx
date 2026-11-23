@@ -86,6 +86,7 @@ export function Header() {
   return (
     <>
       <header
+        style={{ viewTransitionName: "site-header" }}
         className={`fixed inset-x-0 top-0 z-40 px-3 pt-3 transition-transform duration-500 ease-out-expo md:px-6 md:pt-5 ${
           hidden ? "-translate-y-[130%]" : "translate-y-0"
         }`}
@@ -133,6 +134,7 @@ export function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
+        data-menu-open={menuOpen}
         className={`fixed inset-0 z-50 flex flex-col bg-black text-white transition-[opacity,transform,visibility] duration-500 ease-out-expo ${
           menuOpen ? "visible pointer-events-auto opacity-100" : "invisible pointer-events-none translate-y-4 opacity-0"
         }`}
@@ -156,7 +158,7 @@ export function Header() {
               <p className="mb-3 text-[13px] uppercase tracking-[0.14em] text-grey-soft">Solutions</p>
               <ul className="divide-y divide-line border-y border-line">
                 {solutions.map((s, i) => (
-                  <li key={s.slug}>
+                  <li key={s.slug} className="menu-item" style={{ "--i": i } as React.CSSProperties}>
                     <Link
                       href={`/solutions/${s.slug}`}
                       onClick={() => setMenuOpen(false)}
@@ -186,8 +188,8 @@ export function Header() {
             <div className="space-y-8">
               <nav aria-label="Pages">
                 <ul className="space-y-1">
-                  {otherNav.map((n) => (
-                    <li key={n.label}>
+                  {otherNav.map((n, i) => (
+                    <li key={n.label} className="menu-item" style={{ "--i": solutions.length + i } as React.CSSProperties}>
                       <Link href={n.href} onClick={() => setMenuOpen(false)} className="block py-1.5 text-[22px] md:text-[26px]">
                         {n.label}
                       </Link>
@@ -195,7 +197,7 @@ export function Header() {
                   ))}
                 </ul>
               </nav>
-              <address className="space-y-1 text-[15px] not-italic text-grey-soft">
+              <address className="menu-item space-y-1 text-[15px] not-italic text-grey-soft" style={{ "--i": solutions.length + otherNav.length } as React.CSSProperties}>
                 <a href={site.contact.phoneHref} className="block text-[22px] font-semibold text-white">
                   {site.contact.phoneDisplay}
                 </a>
@@ -209,7 +211,10 @@ export function Header() {
           </div>
         </div>
 
-        <div className="grid shrink-0 grid-cols-2 gap-3 border-t border-line p-6 md:flex md:justify-end md:px-10">
+        <div
+          className="menu-item grid shrink-0 grid-cols-2 gap-3 border-t border-line p-6 md:flex md:justify-end md:px-10"
+          style={{ "--i": solutions.length + otherNav.length + 1 } as React.CSSProperties}
+        >
           <ButtonLink href={site.cta.href} size="lg" onClick={() => setMenuOpen(false)} className="w-full md:w-auto">
             {site.cta.label}
           </ButtonLink>

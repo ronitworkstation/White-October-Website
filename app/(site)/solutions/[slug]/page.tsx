@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, ViewTransition } from "react";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
@@ -41,7 +41,8 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
   const others = solutions.filter((x) => x.slug !== s.slug);
 
   return (
-    <>
+    <ViewTransition enter="page-in" exit="page-out" default="none">
+      <div>
       <section aria-labelledby="sol-title" className="container-site pb-16 pt-36 md:pb-24 md:pt-48">
         <p className="inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.16em] text-ink">
           <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
@@ -96,6 +97,7 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
           ))}
         </ul>
       </section>
-    </>
+      </div>
+    </ViewTransition>
   );
 }

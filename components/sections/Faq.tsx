@@ -62,7 +62,7 @@ export function Faq() {
                     </button>
                   </h3>
                   {/* Phones: the answer opens under its question */}
-                  <div id={`faq-a-${i}`} hidden={!open} className="pb-5 text-[17px] leading-snug text-grey-ink lg:hidden">
+                  <div id={`faq-a-${i}`} hidden={!open} className="faq-fade pb-5 text-[17px] leading-snug text-grey-ink lg:hidden">
                     {answer(i)}
                   </div>
                 </li>
@@ -73,8 +73,11 @@ export function Faq() {
           {/* Desktop: one answer panel that follows the selected question */}
           <div id="faq-panel" aria-live="polite" className="hidden self-start rounded-card bg-black p-10 text-white lg:sticky lg:top-28 lg:block">
             <p className="text-[13px] uppercase tracking-[0.14em] text-grey-soft">Answer</p>
-            <p className="mt-4 text-[22px] font-semibold leading-snug">{items[active].q}</p>
-            <p className="mt-4 text-[18px] leading-snug text-grey-soft">{answer(active)}</p>
+            {/* key re-mounts the text on each change so the fade replays */}
+            <div key={active} className="faq-fade">
+              <p className="mt-4 text-[22px] font-semibold leading-snug">{items[active].q}</p>
+              <p className="mt-4 text-[18px] leading-snug text-grey-soft">{answer(active)}</p>
+            </div>
             <div className="mt-8">
               <ButtonLink href={whatsappHref()} variant="outline-light" target="_blank" rel="noopener">
                 Ask on WhatsApp

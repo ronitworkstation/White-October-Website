@@ -190,3 +190,66 @@ html.lenis body {
     display: none;
   }
 }
+
+/* Page transitions (React <ViewTransition> in each page.tsx; Next route changes are transitions).
+   Old page leaves fast and rises out, the new one settles in slightly later: arrival gets the time.
+   The header stays put so the user sees the content move, not the viewport. Off under reduced motion. */
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+}
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(.page-out) {
+  animation: 180ms ease-in both page-out;
+}
+::view-transition-new(.page-in) {
+  animation: 420ms var(--ease-out-expo) 120ms both page-in;
+}
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+html[data-motion="reduce"]::view-transition-group(*),
+html[data-motion="reduce"]::view-transition-old(*),
+html[data-motion="reduce"]::view-transition-new(*) {
+  animation: none !important;
+}
+
+/* Full-screen menu: items rise in one after another when it opens (reason: the menu is a list of destinations,
+   the stagger reads them in order). --i is set per item in Header.tsx. */
+@keyframes menu-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+}
+[data-motion="full"] [data-menu-open="true"] .menu-item {
+  animation: menu-rise 0.6s var(--ease-out-expo) calc(var(--i, 0) * 50ms + 150ms) both;
+}
+
+/* FAQ: the answer fades and rises in when the question changes (reason: feedback that the panel changed) */
+@keyframes faq-fade {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+}
+[data-motion="full"] .faq-fade {
+  animation: faq-fade 0.4s var(--ease-out-expo) both;
+}
