@@ -1,3 +1,4 @@
+import { HomeScroll } from "@/components/motion/HomeScroll";
 import { Hero } from "@/components/sections/Hero";
 import { Clients } from "@/components/sections/Clients";
 import { Statement } from "@/components/sections/Statement";
@@ -20,6 +21,7 @@ export default function Home() {
       <Process />
       <Experience />
       <Faq />
+      <HomeScroll />
     </div>
   );
 }

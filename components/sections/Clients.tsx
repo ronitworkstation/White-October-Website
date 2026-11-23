@@ -79,7 +79,7 @@ export function Clients() {
   const half = Math.ceil(clients.length / 2);
   return (
     <section aria-labelledby="clients-title" className="mt-6 md:mt-10">
-      <div className="chamber-top bg-black pb-24 pt-16 text-white md:pb-36 md:pt-24">
+      <div data-chamber-in className="chamber-top bg-black pb-24 pt-16 text-white md:pb-36 md:pt-24">
         <Eyebrow as="h2" id="clients-title" tone="light">
           {site.clients.eyebrow}
         </Eyebrow>

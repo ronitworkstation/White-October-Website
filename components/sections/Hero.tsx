@@ -3,7 +3,6 @@ import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import Link from "next/link";
-import { Parallax } from "@/components/motion/Parallax";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { site } from "@/content/site";
 import { solutions } from "@/content/solutions";
@@ -50,10 +49,10 @@ export function Hero() {
             <span className="whitespace-nowrap font-bold text-orange-ink">{hero.headline.accent}</span>
           </span>
         </SplitReveal>
-        <p className="hero-rise-late mx-auto mt-4 max-w-[34ch] text-[17px] leading-snug text-grey-ink md:mt-5 md:text-[21px]">
+        <p data-hero-sub className="hero-rise-late mx-auto mt-4 max-w-[34ch] text-[17px] leading-snug text-grey-ink md:mt-5 md:text-[21px]">
           {hero.subline}
         </p>
-        <div className="hero-rise-late mt-6 flex justify-center landscape:absolute landscape:bottom-8 landscape:right-6 landscape:mt-0 md:landscape:right-8 lg:landscape:bottom-10 lg:landscape:right-12">
+        <div data-hero-cta className="hero-rise-late mt-6 flex justify-center landscape:absolute landscape:bottom-8 landscape:right-6 landscape:mt-0 md:landscape:right-8 lg:landscape:bottom-10 lg:landscape:right-12">
           <Magnetic>
             <ButtonLink href={cta.href} size="lg">
               {cta.label}
@@ -65,7 +64,7 @@ export function Hero() {
 
       {/* 56.28vw = the wide photo's height at full width (3840x2161). The top edge fades out so the photo's slightly
           greyer corner never shows a seam against the white page. */}
-      <Parallax className="relative -mt-[71vw] min-h-[178vw] flex-1 landscape:absolute landscape:inset-x-0 landscape:top-[max(48px,calc(100%-56.28vw))] landscape:-z-10 landscape:mt-0 landscape:aspect-[3840/2161] landscape:min-h-0 landscape:flex-none landscape:[mask-image:linear-gradient(to_bottom,transparent,#000_12%)]">
+      <div data-hero-photo className="relative -mt-[71vw] min-h-[178vw] flex-1 landscape:absolute landscape:inset-x-0 landscape:top-[max(48px,calc(100%-56.28vw))] landscape:-z-10 landscape:mt-0 landscape:aspect-[3840/2161] landscape:min-h-0 landscape:flex-none landscape:[mask-image:linear-gradient(to_bottom,transparent,#000_12%)]">
         <picture>
           <source media="(orientation: landscape)" srcSet={desktopSet} sizes="100vw" />
           <img
@@ -77,12 +76,13 @@ export function Hero() {
             className="hero-photo absolute inset-0 h-full w-full object-cover object-[50%_100%]"
           />
         </picture>
-      </Parallax>
+      </div>
 
       {/* The four solution families, laid over the bottom edge of the photo: the first thing a buyer can act on.
           Landscape: bottom-left (the quote CTA holds bottom-right). Portrait: a 2x2 block at the bottom. */}
       <nav
         aria-label="Solutions"
+        data-hero-chips
         className="hero-rise-late absolute inset-x-4 bottom-4 z-10 grid grid-cols-2 gap-2 md:inset-x-8 md:bottom-8 landscape:right-auto landscape:flex landscape:max-w-[calc(100%-300px)] landscape:flex-wrap lg:inset-x-12 lg:bottom-10"
       >
         {solutions.map((s, i) => (

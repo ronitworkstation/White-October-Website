@@ -7,7 +7,7 @@ import { site } from "@/content/site";
 export function Experience() {
   const { experience: e, contact } = site;
   return (
-    <section id="experience" aria-labelledby="experience-title" className="chamber-top relative -mt-8 scroll-mt-0 bg-black py-20 text-white md:-mt-16 md:py-28">
+    <section data-chamber-in id="experience" aria-labelledby="experience-title" className="chamber-top relative -mt-8 scroll-mt-0 bg-black py-20 text-white md:-mt-16 md:py-28">
       <Reveal stagger className="container-site grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
         <div className="lg:col-span-5">
           <p className="inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.16em]">

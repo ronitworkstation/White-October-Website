@@ -28,7 +28,7 @@ export function Facts() {
   );
 
   return (
-    <section ref={root} aria-label="White October in numbers" className="chamber-top bg-black py-20 text-white md:py-28">
+    <section data-chamber-in ref={root} aria-label="White October in numbers" className="chamber-top bg-black py-20 text-white md:py-28">
       <ul className="container-site grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4">
         {facts.map((f) => (
           <li key={f.label} data-fact className="border-t-2 border-line pt-5">

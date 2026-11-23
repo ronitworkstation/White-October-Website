@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 export function Statement() {
   const { label, statement } = site.whyUs;
   return (
-    <section aria-labelledby="why-title" className="chamber-top relative -mt-8 bg-white pb-16 pt-24 md:-mt-16 md:pb-24 md:pt-36">
+    <section data-chamber-in aria-labelledby="why-title" className="chamber-top relative -mt-8 bg-white pb-16 pt-24 md:-mt-16 md:pb-24 md:pt-36">
       <div className="container-site text-center">
         <h2
           id="why-title"
