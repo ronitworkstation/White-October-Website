@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { DUR, EASE, gsap, useGSAP } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/motion";
 import { Plus } from "@phosphor-icons/react";
 import { ButtonLink } from "@/components/ui/Button";
 import { site, whatsappHref } from "@/content/site";
@@ -11,6 +13,24 @@ export function Faq() {
   const { label, title, items, pending } = site.faq;
   const [active, setActive] = useState(0);
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const root = useRef<HTMLElement>(null);
+  const prev = useRef(active);
+
+  // The answer fades and rises in when the question changes (reason: feedback that the panel changed).
+  // Skips the first render so nothing animates on load.
+  useGSAP(
+    () => {
+      if (prev.current === active) return;
+      prev.current = active;
+      if (prefersReducedMotion() || !root.current) return;
+      gsap.fromTo(
+        root.current.querySelectorAll("[data-faq-anim]"),
+        { y: 10, opacity: 0 },
+        { y: 0, opacity: 1, duration: DUR.standard, ease: EASE, clearProps: "transform,opacity" },
+      );
+    },
+    { dependencies: [active], scope: root },
+  );
 
   const answer = (i: number) => items[i].a || pending;
 
@@ -23,7 +43,7 @@ export function Faq() {
   };
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className="chamber-top relative -mt-8 scroll-mt-0 bg-canvas py-20 md:-mt-16 md:py-28">
+    <section ref={root} id="faq" aria-labelledby="faq-title" className="chamber-top relative -mt-8 scroll-mt-0 bg-canvas py-20 md:-mt-16 md:py-28">
       <div className="container-site">
         <p className="inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.16em] text-ink">
           <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
@@ -62,7 +82,7 @@ export function Faq() {
                     </button>
                   </h3>
                   {/* Phones: the answer opens under its question */}
-                  <div id={`faq-a-${i}`} hidden={!open} className="faq-fade pb-5 text-[17px] leading-snug text-grey-ink lg:hidden">
+                  <div id={`faq-a-${i}`} hidden={!open} data-faq-anim className="pb-5 text-[17px] leading-snug text-grey-ink lg:hidden">
                     {answer(i)}
                   </div>
                 </li>
@@ -74,7 +94,7 @@ export function Faq() {
           <div id="faq-panel" aria-live="polite" className="hidden self-start rounded-card bg-black p-10 text-white lg:sticky lg:top-28 lg:block">
             <p className="text-[13px] uppercase tracking-[0.14em] text-grey-soft">Answer</p>
             {/* key re-mounts the text on each change so the fade replays */}
-            <div key={active} className="faq-fade">
+            <div key={active} data-faq-anim>
               <p className="mt-4 text-[22px] font-semibold leading-snug">{items[active].q}</p>
               <p className="mt-4 text-[18px] leading-snug text-grey-soft">{answer(active)}</p>
             </div>

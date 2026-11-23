@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "@/components/motion/Reveal";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 import { site } from "@/content/site";
 
@@ -7,7 +8,7 @@ export function Experience() {
   const { experience: e, contact } = site;
   return (
     <section id="experience" aria-labelledby="experience-title" className="chamber-top relative -mt-8 scroll-mt-0 bg-black py-20 text-white md:-mt-16 md:py-28">
-      <div className="container-site grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+      <Reveal stagger className="container-site grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
         <div className="lg:col-span-5">
           <p className="inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.16em]">
             <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
@@ -39,7 +40,7 @@ export function Experience() {
             className="h-auto w-full object-cover"
           />
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

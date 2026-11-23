@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
+import { Reveal } from "@/components/motion/Reveal";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Plinth } from "@/components/ui/Plinth";
 import { solutions } from "@/content/solutions";
@@ -18,7 +19,7 @@ export function Solutions() {
         </p>
       </div>
 
-      <ul className="mt-10 grid gap-4 md:mt-14 md:gap-6 lg:grid-cols-2">
+      <Reveal as="ul" stagger className="mt-10 grid gap-4 md:mt-14 md:gap-6 lg:grid-cols-2">
         {solutions.map((s, i) => (
           <li key={s.slug}>
             <Link
@@ -51,7 +52,7 @@ export function Solutions() {
             </Link>
           </li>
         ))}
-      </ul>
+      </Reveal>
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Magnetic } from "@/components/motion/Magnetic";
 import { ArrowUpRight, WhatsappLogo } from "@phosphor-icons/react/ssr";
 import { LogoMark } from "@/components/brand/LogoMark";
 import { ButtonLink } from "@/components/ui/Button";
@@ -21,9 +22,11 @@ export function Footer() {
             {contact.phoneDisplay}
           </a>
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <ButtonLink href={site.cta.href} size="lg">
-              {site.cta.label}
-            </ButtonLink>
+            <Magnetic>
+              <ButtonLink href={site.cta.href} size="lg">
+                {site.cta.label}
+              </ButtonLink>
+            </Magnetic>
             <ButtonLink href={whatsappHref()} variant="outline-light" size="lg" target="_blank" rel="noopener">
               <WhatsappLogo size={20} weight="bold" />
               WhatsApp us

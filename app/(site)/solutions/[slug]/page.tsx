@@ -4,6 +4,7 @@ import { Suspense, ViewTransition } from "react";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
+import { Reveal } from "@/components/motion/Reveal";
 import { Plinth } from "@/components/ui/Plinth";
 import { site } from "@/content/site";
 import { solutions } from "@/content/solutions";
@@ -55,7 +56,7 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
       </section>
 
       <section aria-label={`${s.titleBold} ${s.titleRest} items`} className="container-site pb-24 md:pb-32">
-        <ul className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
+        <Reveal as="ul" stagger className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
           {s.items.map((it, i) => (
             <li key={it.name}>
               {it.image && <Plinth src={it.image} alt={it.name} priority={i < 2} />}
@@ -66,7 +67,7 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
               <p className="mt-2 max-w-[34ch] text-[15px] leading-snug text-grey-ink md:text-[17px]">{it.line}</p>
             </li>
           ))}
-        </ul>
+        </Reveal>
       </section>
 
       {/* Quote band */}
