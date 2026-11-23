@@ -29,9 +29,11 @@ export async function generateMetadata({ params }: PageProps<"/solutions/[slug]"
 // params is read inside Suspense so the page shell can render instantly (Next 16 instant navigation).
 export default function SolutionPage({ params }: PageProps<"/solutions/[slug]">) {
   return (
-    <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
-      <SolutionContent params={params} />
-    </Suspense>
+    <ViewTransition enter="page-in" exit="page-out" default="none">
+      <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
+        <SolutionContent params={params} />
+      </Suspense>
+    </ViewTransition>
   );
 }
 
@@ -42,8 +44,7 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
   const others = solutions.filter((x) => x.slug !== s.slug);
 
   return (
-    <ViewTransition enter="page-in" exit="page-out" default="none">
-      <div>
+    <div>
       <section aria-labelledby="sol-title" className="container-site pb-16 pt-36 md:pb-24 md:pt-48">
         <p className="inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.16em] text-ink">
           <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
@@ -98,7 +99,6 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
           ))}
         </ul>
       </section>
-      </div>
-    </ViewTransition>
+    </div>
   );
 }

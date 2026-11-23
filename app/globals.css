@@ -192,28 +192,32 @@ html.lenis body {
 }
 
 /* Page transitions (React <ViewTransition> in each page.tsx; Next route changes are transitions).
-   Old page leaves fast and rises out, the new one settles in slightly later: arrival gets the time.
-   The header stays put so the user sees the content move, not the viewport. Off under reduced motion. */
-@keyframes page-out {
+   Evidence (Awwwards: BCG Building Design, Carter Ogunsola, DSGN Interior): the new page wipes up over the old one
+   while the old one recedes and dims. Ours takes the curved top corners of the site's dark chambers (--radius-chamber),
+   so the edge reads as the same shape you scroll past. The header stays put. Easing in-out-quart, 0.6s.
+   Off under reduced motion. clip-path and filter run on the browser snapshots, not on page layout. */
+@keyframes page-wipe-up {
+  from {
+    clip-path: inset(100% 0 0 0 round var(--radius-chamber) var(--radius-chamber) 0 0);
+  }
   to {
-    opacity: 0;
-    transform: translate3d(0, -8px, 0);
+    clip-path: inset(0 0 0 0 round 0 0 0 0);
   }
 }
-@keyframes page-in {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 16px, 0);
+@keyframes page-recede {
+  to {
+    transform: translate3d(0, -8vh, 0);
+    filter: brightness(0.4);
   }
 }
 ::view-transition {
   pointer-events: none;
 }
 ::view-transition-old(.page-out) {
-  animation: 180ms ease-in both page-out;
+  animation: 600ms var(--ease-in-out-quart) both page-recede;
 }
 ::view-transition-new(.page-in) {
-  animation: 420ms var(--ease-out-expo) 120ms both page-in;
+  animation: 600ms var(--ease-in-out-quart) both page-wipe-up;
 }
 ::view-transition-group(site-header) {
   animation: none;
