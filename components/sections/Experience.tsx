@@ -24,7 +24,7 @@ export function Experience() {
               </span>
             ))}
           </address>
-          <a href={contact.mapsUrl} target="_blank" rel="noopener" className="group mt-6 inline-flex items-center gap-2 text-[17px] font-semibold">
+          <a href={contact.mapsUrl} target="_blank" rel="noopener" className="group mt-4 inline-flex min-h-11 items-center gap-2 text-[17px] font-semibold">
             <span className="border-b-2 border-orange pb-0.5">View on map</span>
             <ArrowUpRight size={18} weight="bold" className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>

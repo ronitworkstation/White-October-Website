@@ -85,7 +85,7 @@ export function Hero() {
           <Link
             key={s.slug}
             href={`/solutions/${s.slug}`}
-            className="group/chip flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-2.5 text-[14px] font-semibold leading-tight text-ink transition-colors duration-300 hover:bg-ink hover:text-white md:text-[15px]"
+            className="group/chip flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-3 text-[14px] font-semibold leading-tight text-ink transition-colors duration-300 hover:bg-ink hover:text-white md:text-[15px]"
           >
             <span aria-hidden className="font-display text-[13px] text-grey transition-colors group-hover/chip:text-orange">
               {String(i + 1).padStart(2, "0")}

@@ -44,23 +44,23 @@ export function Footer() {
                 href={contact.mapsUrl}
                 target="_blank"
                 rel="noopener"
-                className="group mt-5 inline-flex items-center gap-2 text-[17px] font-semibold text-white"
+                className="group mt-3 inline-flex min-h-11 items-center gap-2 text-[17px] font-semibold text-white"
               >
                 <span className="border-b-2 border-orange pb-0.5">View on map</span>
                 <ArrowUpRight size={18} weight="bold" className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
               <p className="mt-6 text-[17px]">
-                <a href={`mailto:${contact.email}`} className="border-b border-line pb-0.5 transition-colors hover:border-orange">
+                <a href={`mailto:${contact.email}`} className="inline-block border-b border-line py-2.5 transition-colors hover:border-orange">
                   {contact.email}
                 </a>
               </p>
             </div>
             <nav aria-label="Solutions" className="md:col-span-3 md:col-start-7">
               <h2 className="text-[15px] text-grey-soft">Solutions</h2>
-              <ul className="mt-4 space-y-2.5 text-[18px]">
+              <ul className="mt-2 text-[18px]">
                 {solutions.map((s) => (
                   <li key={s.slug}>
-                    <Link href={`/solutions/${s.slug}`} className="transition-colors hover:text-orange">
+                    <Link href={`/solutions/${s.slug}`} className="block py-2.5 transition-colors hover:text-orange">
                       {s.titleBold} {s.titleRest}
                     </Link>
                   </li>
@@ -69,18 +69,18 @@ export function Footer() {
             </nav>
             <nav aria-label="Company" className="md:col-span-3">
               <h2 className="text-[15px] text-grey-soft">White October</h2>
-              <ul className="mt-4 space-y-2.5 text-[18px]">
+              <ul className="mt-2 text-[18px]">
                 {site.nav
                   .filter((n) => !("hasMenu" in n))
                   .map((n) => (
                     <li key={n.label}>
-                      <Link href={n.href} className="transition-colors hover:text-orange">
+                      <Link href={n.href} className="block py-2.5 transition-colors hover:text-orange">
                         {n.label}
                       </Link>
                     </li>
                   ))}
                 <li>
-                  <Link href={site.cta.href} className="transition-colors hover:text-orange">
+                  <Link href={site.cta.href} className="block py-2.5 transition-colors hover:text-orange">
                     {site.cta.label}
                   </Link>
                 </li>

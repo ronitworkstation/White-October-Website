@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
@@ -24,7 +25,16 @@ export async function generateMetadata({ params }: PageProps<"/solutions/[slug]"
   };
 }
 
-export default async function SolutionPage({ params }: PageProps<"/solutions/[slug]">) {
+// params is read inside Suspense so the page shell can render instantly (Next 16 instant navigation).
+export default function SolutionPage({ params }: PageProps<"/solutions/[slug]">) {
+  return (
+    <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
+      <SolutionContent params={params} />
+    </Suspense>
+  );
+}
+
+async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug]">["params"] }) {
   const { slug } = await params;
   const s = solutions.find((x) => x.slug === slug);
   if (!s) notFound();

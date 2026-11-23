@@ -55,6 +55,10 @@
     line-height: 1.6;
     background: var(--color-canvas);
   }
+  /* Avoid one-word last lines in body copy (split-reveal text is excluded: SplitText owns its line breaks) */
+  p:not([data-split]) {
+    text-wrap: pretty;
+  }
   ::selection {
     background: var(--color-orange);
     color: var(--color-ink);

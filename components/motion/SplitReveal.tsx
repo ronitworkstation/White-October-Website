@@ -54,7 +54,8 @@ export function SplitReveal({
             if (scrub) {
               return gsap.fromTo(
                 self.words,
-                { opacity: 0.18 },
+                // 0.45 keeps unread words at about 3:1 on white: still clearly "not yet", and legible (WCAG large text).
+                { opacity: 0.45 },
                 {
                   opacity: 1,
                   ease: "none",
