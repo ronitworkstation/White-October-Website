@@ -17,7 +17,7 @@ export default function Home() {
       <Statement />
       <Solutions />
       <ItemsBand />
-      <div className="bg-orange">
+      <div className="bg-white">
         <Facts />
       </div>
       <Process />
