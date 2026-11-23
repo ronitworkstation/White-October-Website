@@ -176,22 +176,24 @@ export function Header() {
                     <Link
                       href={`/solutions/${s.slug}`}
                       onClick={() => setMenuOpen(false)}
-                      className="group flex items-center gap-4 py-4 md:gap-6 md:py-6"
+                      className="group relative isolate -mx-3 flex items-center gap-4 overflow-hidden rounded-[16px] px-3 py-4 outline-offset-0 transition-colors duration-300 hover:text-ink focus-visible:text-ink md:gap-6 md:py-6"
                     >
-                      <span aria-hidden className="w-8 font-display text-[16px] font-bold text-grey-soft md:text-[20px]">
+                      {/* Hover fill wipes up from the bottom (reference: Docusign Brand menu shapes filling on hover) */}
+                      <span aria-hidden className="absolute inset-0 -z-10 origin-bottom scale-y-0 bg-orange transition-transform duration-500 ease-out-expo group-hover:scale-y-100 group-focus-visible:scale-y-100" />
+                      <span aria-hidden className="w-8 font-display text-[16px] font-bold text-grey-soft transition-colors group-hover:text-ink group-focus-visible:text-ink md:text-[20px]">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="flex-1">
                         <span className="block text-[26px] font-bold leading-tight md:text-[44px]">
                           {s.titleBold} <span className="font-normal">{s.titleRest}</span>
                         </span>
-                        <span className="mt-1 hidden text-[15px] text-grey-soft md:block">{s.short}</span>
+                        <span className="mt-1 hidden text-[15px] text-grey-soft transition-colors group-hover:text-ink group-focus-visible:text-ink md:block">{s.short}</span>
                       </span>
                       <ArrowUpRight
                         size={28}
                         weight="bold"
                         aria-hidden
-                        className="text-orange transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                        className="text-orange transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-ink group-focus-visible:text-ink"
                       />
                     </Link>
                   </li>

@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { BackToTop } from "@/components/site/BackToTop";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { ArrowUpRight, WhatsappLogo } from "@phosphor-icons/react/ssr";
 import { LogoMark } from "@/components/brand/LogoMark";
@@ -58,19 +60,7 @@ export function Footer() {
                 </a>
               </p>
             </div>
-            <nav aria-label="Solutions" className="md:col-span-3 md:col-start-7">
-              <h2 className="text-[15px] text-grey-soft">Solutions</h2>
-              <ul className="mt-2 text-[18px]">
-                {solutions.map((s) => (
-                  <li key={s.slug}>
-                    <Link href={`/solutions/${s.slug}`} className="block py-2.5 transition-colors hover:text-orange">
-                      {s.titleBold} {s.titleRest}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <nav aria-label="Company" className="md:col-span-3">
+            <nav aria-label="Company" className="md:col-span-3 md:col-start-10">
               <h2 className="text-[15px] text-grey-soft">White October</h2>
               <ul className="mt-2 text-[18px]">
                 {site.nav
@@ -91,13 +81,43 @@ export function Footer() {
             </nav>
           </div>
 
+          {/* Solution tiles (reference: Yucca Packaging footer): outlined tiles that fill with the family photo on
+              hover or focus. Reason: the last chance to pick a family, shown rather than listed. */}
+          <nav aria-label="Solutions" className="mt-20">
+            <h2 className="text-[15px] text-grey-soft">Solutions</h2>
+            <ul className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+              {solutions.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/solutions/${s.slug}`}
+                    className="group relative grid aspect-[4/3] place-items-center overflow-hidden rounded-tile border-2 border-line p-4 text-center transition-colors duration-500 hover:border-orange focus-visible:border-orange"
+                  >
+                    <Image
+                      src={s.cover}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 25vw, 50vw"
+                      className="scale-110 object-cover opacity-0 transition-[opacity,transform] duration-700 ease-out-expo group-hover:scale-100 group-hover:opacity-50 group-focus-visible:scale-100 group-focus-visible:opacity-50"
+                    />
+                    <span className="relative text-[18px] leading-tight md:text-[22px]">
+                      <span className="font-bold">{s.titleBold}</span> <span className="font-light">{s.titleRest}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
           <div className="mt-20 flex flex-col gap-2 border-t border-line pt-6 text-[14px] text-grey-soft md:flex-row md:items-center md:justify-between">
             <p>
               <span className="font-semibold text-white">White October</span>
               <span className="mx-2 text-grey">/</span>
               {site.tagline}
             </p>
-            <p>© {site.year} White October. Bengaluru, India.</p>
+            <div className="flex items-center justify-between gap-4">
+              <p>© {site.year} White October. Bengaluru, India.</p>
+              <BackToTop />
+            </div>
           </div>
         </div>
 

@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Clients } from "@/components/sections/Clients";
 import { Statement } from "@/components/sections/Statement";
 import { Solutions } from "@/components/sections/Solutions";
+import { ItemsBand } from "@/components/sections/ItemsBand";
 import { Facts } from "@/components/sections/Facts";
 import { Process } from "@/components/sections/Process";
 import { Experience } from "@/components/sections/Experience";
@@ -15,7 +16,8 @@ export default function Home() {
       <Clients />
       <Statement />
       <Solutions />
-      <div className="bg-white">
+      <ItemsBand />
+      <div className="bg-orange">
         <Facts />
       </div>
       <Process />
