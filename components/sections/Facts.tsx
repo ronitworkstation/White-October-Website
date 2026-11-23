@@ -34,7 +34,7 @@ export function Facts() {
           <li key={f.label} data-fact className="border-t-2 border-line pt-5">
             <p
               className={`font-display font-bold leading-none text-orange ${
-                "value" in f ? "text-[64px] md:text-[96px] lg:text-[112px]" : "whitespace-nowrap text-[44px] md:text-[64px] lg:text-[80px]"
+                "value" in f ? "text-[64px] md:text-[96px] lg:text-[112px]" : "whitespace-nowrap text-[44px] md:text-[64px] lg:text-[52px] xl:text-[72px]"
               }`}
             >
               {"value" in f ? (

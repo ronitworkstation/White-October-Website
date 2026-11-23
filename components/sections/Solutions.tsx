@@ -18,7 +18,7 @@ export function Solutions() {
         </p>
       </div>
 
-      <ul className="mt-10 grid gap-4 md:mt-14 md:grid-cols-2 md:gap-6">
+      <ul className="mt-10 grid gap-4 md:mt-14 md:gap-6 lg:grid-cols-2">
         {solutions.map((s, i) => (
           <li key={s.slug}>
             <Link
