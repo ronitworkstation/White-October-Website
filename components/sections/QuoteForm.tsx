@@ -38,8 +38,10 @@ export function QuoteForm() {
     if (get("phone").replace(/\D/g, "").length < 10) next.phone = "Please enter a phone number with at least 10 digits.";
     if (!/^\S+@\S+\.\S+$/.test(get("email"))) next.email = "Please enter a valid email address.";
     setErrors(next);
-    if (Object.keys(next).length) {
-      form.querySelector<HTMLElement>("[aria-invalid='true']")?.focus();
+    const firstBad = Object.keys(next)[0];
+    if (firstBad) {
+      // aria-invalid is not rendered yet at this point, so focus the first failing field by name.
+      (form.elements.namedItem(firstBad) as HTMLElement | null)?.focus();
       return;
     }
 

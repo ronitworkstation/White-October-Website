@@ -46,7 +46,8 @@ export function Faq() {
                       }}
                       type="button"
                       aria-expanded={open}
-                      aria-controls={`faq-a-${i}`}
+                      // Phones show the inline answer, desktop the shared panel (the inline one is display:none there).
+                      aria-controls={`faq-a-${i} faq-panel`}
                       onClick={() => setActive(i)}
                       onKeyDown={(e) => onKey(e, i)}
                       className="flex w-full items-center justify-between gap-4 py-5 text-left text-[19px] font-semibold leading-snug text-ink md:text-[22px]"
@@ -70,7 +71,7 @@ export function Faq() {
           </ul>
 
           {/* Desktop: one answer panel that follows the selected question */}
-          <div aria-live="polite" className="hidden self-start rounded-card bg-black p-10 text-white lg:sticky lg:top-28 lg:block">
+          <div id="faq-panel" aria-live="polite" className="hidden self-start rounded-card bg-black p-10 text-white lg:sticky lg:top-28 lg:block">
             <p className="text-[13px] uppercase tracking-[0.14em] text-grey-soft">Answer</p>
             <p className="mt-4 text-[22px] font-semibold leading-snug">{items[active].q}</p>
             <p className="mt-4 text-[18px] leading-snug text-grey-soft">{answer(active)}</p>

@@ -24,20 +24,22 @@ export function Plinth({
   const [width, height] = sizeOf(src);
   return (
     <div
-      className={`relative grid place-items-center overflow-hidden rounded-tile p-5 md:p-8 ${aspect} ${
-        tone === "light" ? "bg-panel" : "bg-black"
-      } ${className}`}
+      className={`relative overflow-hidden rounded-tile ${aspect} ${tone === "light" ? "bg-panel" : "bg-black"} ${className}`}
     >
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        sizes={sizes}
-        preload={priority}
-        style={{ maxWidth: width, maxHeight: height }}
-        className="h-auto max-h-full w-auto max-w-full rounded-[16px] object-contain"
-      />
+      {/* The inset box has a definite size, so the photo can be capped by both the panel and its natural size.
+          (An inline px max-width on the image alone overrode max-w-full and let photos overflow small panels.) */}
+      <div className="absolute inset-5 md:inset-8">
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes={sizes}
+          preload={priority}
+          style={{ maxWidth: width, maxHeight: height }}
+          className="absolute inset-0 m-auto size-full rounded-[16px] object-contain"
+        />
+      </div>
     </div>
   );
 }
