@@ -31,8 +31,9 @@
   --font-display: var(--font-antonio), "Arial Narrow", sans-serif;
 
   --radius-card: 32px;
+  --radius-tile: 24px;
   --radius-input: 14px;
-  --radius-chamber: 64px;
+  --radius-chamber: 48px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
@@ -95,6 +96,33 @@ html.lenis body {
     border-top-left-radius: var(--radius-chamber);
     border-top-right-radius: var(--radius-chamber);
   }
+}
+
+/* Type scale (REDESIGN-PLAN.md). display: once per section, Antonio. Sizes are fluid, line-height tight. */
+@utility text-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 9rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+@utility text-h1 {
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+@utility text-h2 {
+  font-size: clamp(1.75rem, 3.2vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+@utility text-body {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+@utility text-small {
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 /* Client logo marquee */
