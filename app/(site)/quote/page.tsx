@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ViewTransition } from "react";
 import { QuoteForm } from "@/components/sections/QuoteForm";
 import { site } from "@/content/site";
 
@@ -11,7 +10,6 @@ export const metadata: Metadata = {
 
 export default function QuotePage() {
   return (
-    <ViewTransition enter="page-in" exit="page-out" default="none">
     <section aria-labelledby="quote-title" className="container-site pb-24 pt-36 md:pb-32 md:pt-48">
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
@@ -31,6 +29,5 @@ export default function QuotePage() {
         </div>
       </div>
     </section>
-    </ViewTransition>
   );
 }

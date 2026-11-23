@@ -191,50 +191,6 @@ html.lenis body {
   }
 }
 
-/* Page transitions (React <ViewTransition> in each page.tsx; Next route changes are transitions).
-   Evidence (Awwwards: BCG Building Design, Carter Ogunsola, DSGN Interior): the new page wipes up over the old one
-   while the old one recedes and dims. Ours takes the curved top corners of the site's dark chambers (--radius-chamber),
-   so the edge reads as the same shape you scroll past. The header stays put. Easing in-out-quart, 0.6s.
-   Off under reduced motion. clip-path and filter run on the browser snapshots, not on page layout. */
-@keyframes page-wipe-up {
-  from {
-    clip-path: inset(100% 0 0 0 round var(--radius-chamber) var(--radius-chamber) 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0 round 0 0 0 0);
-  }
-}
-@keyframes page-recede {
-  to {
-    transform: translate3d(0, -8vh, 0);
-    filter: brightness(0.4);
-  }
-}
-::view-transition {
-  pointer-events: none;
-}
-::view-transition-old(.page-out) {
-  animation: 600ms var(--ease-in-out-quart) both page-recede;
-}
-::view-transition-new(.page-in) {
-  animation: 600ms var(--ease-in-out-quart) both page-wipe-up;
-}
-::view-transition-group(site-header) {
-  animation: none;
-  z-index: 100;
-}
-::view-transition-old(site-header) {
-  display: none;
-}
-::view-transition-new(site-header) {
-  animation: none;
-}
-html[data-motion="reduce"]::view-transition-group(*),
-html[data-motion="reduce"]::view-transition-old(*),
-html[data-motion="reduce"]::view-transition-new(*) {
-  animation: none !important;
-}
-
 /* Reveal (components/motion/Reveal.tsx): under full motion, blocks stay invisible until GSAP takes over,
    so they never flash in their final position first. Reduced motion or no JS: nothing is hidden. */
 [data-motion="full"] [data-reveal="self"]:not([data-reveal-ready]) {

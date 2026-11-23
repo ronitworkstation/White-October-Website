@@ -1,5 +1,6 @@
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { PageCurtain } from "@/components/motion/PageCurtain";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 
 export default function SiteLayout({ children }: LayoutProps<"/">) {
@@ -15,6 +16,7 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
       <main id="main">{children}</main>
       <Footer />
       <WhatsAppButton />
+      <PageCurtain />
     </>
   );
 }

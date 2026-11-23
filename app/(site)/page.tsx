@@ -1,4 +1,3 @@
-import { ViewTransition } from "react";
 import { Hero } from "@/components/sections/Hero";
 import { Clients } from "@/components/sections/Clients";
 import { Statement } from "@/components/sections/Statement";
@@ -10,8 +9,7 @@ import { Faq } from "@/components/sections/Faq";
 
 export default function Home() {
   return (
-    <ViewTransition enter="page-in" exit="page-out" default="none">
-      <div>
+    <div>
       <Hero />
       <Clients />
       <Statement />
@@ -22,7 +20,6 @@ export default function Home() {
       <Process />
       <Experience />
       <Faq />
-      </div>
-    </ViewTransition>
+    </div>
   );
 }
