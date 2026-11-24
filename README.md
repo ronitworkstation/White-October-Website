@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# White October
 
-## Getting Started
+Website for **White October**, a Bengaluru studio that designs corporate gifts, recognition awards, event branding, print and custom packaging for companies across India.
 
-First, run the development server:
+**Live site:** [whiteoctober-ronit-work-station.vercel.app](https://whiteoctober-ronit-work-station.vercel.app)
+
+## Overview
+
+A fast, animated marketing site built to present White October's solutions, show its client work and turn visitors into quote requests.
+
+- Home page with hero, solutions, process, facts, client wall, FAQ and footer
+- Individual solution pages generated from structured content
+- Quote request page with a form
+- WhatsApp shortcut and a mobile action bar
+- Smooth scrolling, page transitions and scroll-triggered section motion
+- SEO setup: page metadata, Open Graph and Twitter cards, `LocalBusiness` structured data, `robots.txt` and `sitemap.xml`
+
+## Tech stack
+
+| Area | Tools |
+| --- | --- |
+| Framework | [Next.js](https://nextjs.org) (App Router), [React](https://react.dev), TypeScript |
+| Styling | [Tailwind CSS](https://tailwindcss.com) v4 |
+| Motion | [GSAP](https://gsap.com), [Motion](https://motion.dev), [Lenis](https://lenis.darkroom.engineering) smooth scroll |
+| 3D | [three.js](https://threejs.org), React Three Fiber, drei |
+| Icons | [Phosphor Icons](https://phosphoricons.com) |
+| Hosting | [Vercel](https://vercel.com) |
+
+## Getting started
+
+You need [Node.js](https://nodejs.org) 20 or newer and npm.
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/ronitworkstation/White-October-Website.git
+cd White-October-Website
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). The page reloads as you edit files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Starts the development server |
+| `npm run build` | Creates a production build |
+| `npm run start` | Serves the production build |
+| `npm run lint` | Checks the code with ESLint |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/            Routes, layouts, fonts, robots and sitemap
+  (site)/       Public pages: home, quote, solutions/[slug]
+  lab/          Internal pages for testing fonts and UI pieces
+components/
+  brand/        Logo and brand mark
+  motion/       Reveal, page curtain, magnetic and scroll effects
+  sections/     Page sections (Hero, Solutions, Process, Clients, FAQ ...)
+  site/         Header, footer, mobile bar, WhatsApp button
+  ui/           Shared UI elements such as Button
+content/        Site copy and data: business details, solutions, clients
+lib/            Shared helpers
+public/         Images, client logos and brand files
+scripts/        Asset import and export helpers
+docs/           Design notes and project specification
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Editing content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Most text and data live in `content/`:
 
-## Deploy on Vercel
+- `site.ts` holds business details, contact information and the site URL.
+- `solutions.ts` holds the solutions shown on the site.
+- `clients.ts` holds the client list used in the client wall.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Change the file, save, and the page updates.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+The site is hosted on Vercel and connected to this repository. Every push to the `main` branch builds and publishes a new version automatically. Pushes to other branches create preview links.
+
+## Documentation
+
+- [`docs/spec.md`](docs/spec.md): project specification
+- [`docs/DESIGN.md`](docs/DESIGN.md): design system and visual rules
+
+## License
+
+All rights reserved. Content, logos and brand assets belong to White October.
