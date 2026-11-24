@@ -35,7 +35,7 @@ export function PageCurtain() {
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      if (busy.current || prefersReducedMotion()) return;
+      if (prefersReducedMotion()) return;
       const a = (e.target as Element | null)?.closest?.("a");
       if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
       const url = new URL(a.href, location.href);
@@ -44,9 +44,10 @@ export function PageCurtain() {
       // Capture phase + stopPropagation: Next's own <Link> click handler never sees the click, so it cannot navigate early.
       e.preventDefault();
       e.stopPropagation();
+      // A second page link clicked while a transition runs is swallowed, not handed to Next (it would race the first).
+      if (busy.current) return;
       busy.current = true;
       setRun((n) => n + 1);
-      lenis?.stop();
       const p = panel.current;
       const m = mark.current;
       if (!p || !m) {
@@ -54,6 +55,7 @@ export function PageCurtain() {
         busy.current = false;
         return;
       }
+      lenis?.stop();
 
       const ease = "power3.inOut";
       p.style.pointerEvents = "auto";
@@ -79,7 +81,10 @@ export function PageCurtain() {
               };
               router.push(url.pathname + url.search + url.hash);
             }).then(() => {
-              window.scrollTo(0, 0);
+              // Top of the new page, or its #section when the link has one (e.g. /#faq from another page).
+              const target = url.hash ? document.getElementById(decodeURIComponent(url.hash.slice(1))) : null;
+              if (target) target.scrollIntoView();
+              else window.scrollTo(0, 0);
               tl.resume();
             }),
         )

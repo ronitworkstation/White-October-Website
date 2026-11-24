@@ -13,8 +13,9 @@ import { solutions } from "@/content/solutions";
 export function Footer() {
   const { contact } = site;
   return (
-    <footer className="relative mt-6 overflow-hidden pb-14 md:mt-10 md:pb-0">
-      <div className="chamber-top bg-black text-white">
+    <footer className="relative mt-6 overflow-hidden md:mt-10">
+      {/* Phones: room under the cropped mark for the sticky MobileBar (black, so no white strip; none on /quote). */}
+      <div className="chamber-top bg-black text-white max-md:[footer:has(~[data-mobile-bar])_&]:pb-[calc(50px+env(safe-area-inset-bottom))]">
         <div className="container-site pt-20 md:pt-28">
           <p className="text-[15px] text-grey-soft">Start a conversation</p>
           <a

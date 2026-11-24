@@ -21,6 +21,9 @@ export function MobileBar() {
     <div
       role="region"
       aria-label="Contact actions"
+      data-mobile-bar
+      // Off-screen: out of the tab order and the accessibility tree.
+      inert={!shown}
       className={`fixed inset-x-0 bottom-0 z-30 flex border-t-2 border-ink bg-white pb-[env(safe-area-inset-bottom)] transition-transform duration-500 ease-out-expo md:hidden ${
         shown ? "translate-y-0" : "translate-y-full"
       }`}

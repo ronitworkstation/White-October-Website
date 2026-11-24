@@ -22,30 +22,68 @@ export function SectionMotion() {
     () => {
       if (prefersReducedMotion()) return;
 
-      const hero = document.querySelector<HTMLElement>("section[aria-labelledby='hero-title']");
-      if (hero) {
-        const q = (s: string) => hero.querySelector<HTMLElement>(s);
-        const tl = gsap.timeline({
-          defaults: { ease: "none" },
-          scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: 0.6 },
-        });
-        tl.to([q("#hero-title"), q("[data-hero-sub]"), q("[data-hero-proof]")], { y: -120, opacity: 0, duration: 0.55, stagger: 0.05 }, 0)
-          .to([q("[data-hero-cta]"), q("[data-hero-chips]")], { y: -40, opacity: 0, duration: 0.35 }, 0.1)
-          .to(q("[data-hero-photo]"), { scale: 0.9, y: 60, transformOrigin: "50% 100%", duration: 1 }, 0);
-      }
+      // Next keeps visited routes mounted but hidden (display: none), and a route can stream in after the pathname
+      // changes (Suspense). So: only take elements of the shown route, and rebuild when that set changes.
+      const visible = (selector: string) =>
+        gsap.utils.toArray<HTMLElement>(selector).filter((el) => el.getClientRects().length > 0);
 
-      gsap.utils.toArray<HTMLElement>("[data-chamber-in]").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { scale: 0.94, transformOrigin: "50% 0%" },
-          { scale: 1, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top 55%", scrub: 0.6 } },
-        );
-      });
+      let ctx: gsap.Context | undefined;
+      let targets: HTMLElement[] = [];
+      const build = () => {
+        const hero = visible("section[aria-labelledby='hero-title']")[0];
+        const chambers = visible("[data-chamber-in]");
+        const next = hero ? [hero, ...chambers] : chambers;
+        if (next.length === targets.length && next.every((el, i) => el === targets[i])) return;
+        targets = next;
+        ctx?.revert();
+        ctx = gsap.context(() => {
+          if (hero) {
+            const q = (s: string) => hero.querySelector<HTMLElement>(s);
+            const tl = gsap.timeline({
+              defaults: { ease: "none" },
+              scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: 0.6 },
+            });
+            tl.to([q("#hero-title"), q("[data-hero-sub]"), q("[data-hero-proof]")], { y: -120, opacity: 0, duration: 0.55, stagger: 0.05 }, 0)
+              .to([q("[data-hero-cta]"), q("[data-hero-chips]")], { y: -40, opacity: 0, duration: 0.35 }, 0.1)
+              .to(q("[data-hero-photo]"), { scale: 0.9, y: 60, transformOrigin: "50% 100%", duration: 1 }, 0);
+          }
+
+          chambers.forEach((el) => {
+            gsap.fromTo(
+              el,
+              { scale: 0.94, transformOrigin: "50% 0%" },
+              {
+                scale: 1,
+                ease: "none",
+                // This layout-level code can run before a page's own pin (home Process) exists, so these triggers
+                // refresh after the default ones: chambers below a pin must be measured with its pin spacing.
+                scrollTrigger: { trigger: el, start: "top bottom", end: "top 55%", scrub: 0.6, refreshPriority: -1 },
+              },
+            );
+          });
+        });
+        // Re-measure everything once the route's own triggers (pins) exist.
+        ScrollTrigger.refresh();
+      };
+
+      let raf = requestAnimationFrame(build);
+      const schedule = () => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(build);
+      };
+      const observer = new MutationObserver(schedule);
+      const main = document.getElementById("main");
+      if (main) observer.observe(main, { childList: true, subtree: true });
 
       // Fonts and images change heights after load; re-measure once everything is in.
       const refresh = () => ScrollTrigger.refresh();
       window.addEventListener("load", refresh, { once: true });
-      return () => window.removeEventListener("load", refresh);
+      return () => {
+        cancelAnimationFrame(raf);
+        observer.disconnect();
+        window.removeEventListener("load", refresh);
+        ctx?.revert();
+      };
     },
     { dependencies: [pathname], revertOnUpdate: true },
   );
