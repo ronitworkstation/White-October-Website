@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLenis } from "lenis/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { DUR, EASE, gsap, useGSAP } from "@/lib/gsap";
@@ -39,6 +40,18 @@ export function Header() {
     if (menuOpen) lenis?.stop();
     else lenis?.start();
   }, [menuOpen, lenis]);
+
+  // Any navigation closes the menu: the curtain announces it up front, and the pathname change covers the rest
+  // (browser back/forward, links that skip the curtain).
+  const pathname = usePathname();
+  useEffect(() => {
+    const shut = () => setMenuOpen(false);
+    window.addEventListener("wo:navigate", shut);
+    return () => window.removeEventListener("wo:navigate", shut);
+  }, []);
+  useEffect(() => {
+    setMenuOpen(false); // eslint-disable-line react-hooks/set-state-in-effect
+  }, [pathname]);
 
   const close = useCallback(() => {
     setMenuOpen(false);

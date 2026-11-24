@@ -47,6 +47,8 @@ export function PageCurtain() {
       // A second page link clicked while a transition runs is swallowed, not handed to Next (it would race the first).
       if (busy.current) return;
       busy.current = true;
+      // The curtain swallows the click, so a menu link's own onClick never runs: tell the header to close the menu.
+      window.dispatchEvent(new Event("wo:navigate"));
       setRun((n) => n + 1);
       const p = panel.current;
       const m = mark.current;
