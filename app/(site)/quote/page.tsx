@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/motion/Reveal";
 import { QuoteForm } from "@/components/sections/QuoteForm";
 import { site } from "@/content/site";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function QuotePage() {
   return (
     <section aria-labelledby="quote-title" className="container-site pb-24 pt-36 md:pb-32 md:pt-48">
-      <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <Reveal stagger className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <h1 id="quote-title" className="text-h1 text-ink">
             <span className="font-bold">Send</span> <span className="font-light">a Quote</span>
@@ -27,7 +28,7 @@ export default function QuotePage() {
         <div className="lg:col-span-7">
           <QuoteForm />
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

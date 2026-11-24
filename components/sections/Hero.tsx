@@ -1,5 +1,5 @@
 import { getImageProps } from "next/image";
-import { ArrowRight } from "@phosphor-icons/react/ssr";
+import { ArrowRight, Phone } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import Link from "next/link";
@@ -52,13 +52,22 @@ export function Hero() {
         <p data-hero-sub className="hero-rise-late mx-auto mt-4 max-w-[34ch] text-[17px] leading-snug text-grey-ink md:mt-5 md:text-[21px]">
           {hero.subline}
         </p>
-        <div data-hero-cta className="hero-rise-late mt-6 flex justify-center landscape:absolute landscape:bottom-8 landscape:right-6 landscape:mt-0 md:landscape:right-8 lg:landscape:bottom-10 lg:landscape:right-12">
+        {/* Proof under the promise: the same line the client logos carry (content/site.ts clients.eyebrow) */}
+        <p data-hero-proof className="hero-rise-late mx-auto mt-3 text-[14px] font-semibold text-ink md:text-[15px]">
+          {site.clients.eyebrow}
+        </p>
+        <div data-hero-cta className="hero-rise-late mt-6 flex flex-wrap justify-center gap-3 landscape:absolute landscape:bottom-8 landscape:right-6 landscape:mt-0 md:landscape:right-8 lg:landscape:bottom-10 lg:landscape:right-12">
+          {/* Call is the primary action: it answers the headline ("call us?") literally. Quote is the second. */}
           <Magnetic>
-            <ButtonLink href={cta.href} size="lg">
-              {cta.label}
-              <ArrowRight size={18} weight="bold" className="transition-transform duration-300 group-hover/btn:translate-x-1" />
+            <ButtonLink href={site.contact.phoneHref} size="lg">
+              <Phone size={18} weight="bold" aria-hidden />
+              Call {site.contact.phoneDisplay}
             </ButtonLink>
           </Magnetic>
+          <ButtonLink href={cta.href} variant="outline" size="lg">
+            {cta.label}
+            <ArrowRight size={18} weight="bold" className="transition-transform duration-300 group-hover/btn:translate-x-1" />
+          </ButtonLink>
         </div>
       </div>
 
@@ -83,7 +92,7 @@ export function Hero() {
       <nav
         aria-label="Solutions"
         data-hero-chips
-        className="hero-rise-late absolute inset-x-4 bottom-4 z-10 grid grid-cols-2 gap-2 md:inset-x-8 md:bottom-8 landscape:right-auto landscape:flex landscape:max-w-[calc(100%-300px)] landscape:flex-wrap lg:inset-x-12 lg:bottom-10"
+        className="hero-rise-late absolute inset-x-4 bottom-4 z-10 grid grid-cols-2 gap-2 md:inset-x-8 md:bottom-8 landscape:right-auto landscape:flex landscape:max-w-[calc(100%-560px)] landscape:flex-wrap lg:inset-x-12 lg:bottom-10"
       >
         {solutions.map((s, i) => (
           <Link

@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
+import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Reveal } from "@/components/motion/Reveal";
 import { Plinth } from "@/components/ui/Plinth";
 import { site } from "@/content/site";
@@ -48,9 +49,9 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
           <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
           Solutions
         </p>
-        <h1 id="sol-title" className="text-display mt-6 text-ink">
+        <SplitReveal as="h1" id="sol-title" trigger="load" className="text-display mt-6 text-ink">
           <span className="font-bold">{s.titleBold}</span> <span className="font-light">{s.titleRest}</span>
-        </h1>
+        </SplitReveal>
         <p className="mt-8 max-w-[44ch] text-[20px] leading-snug text-grey-ink md:text-[24px]">{s.summary}</p>
       </section>
 
@@ -70,7 +71,7 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
       </section>
 
       {/* Quote band */}
-      <section aria-labelledby="sol-quote" className="chamber-top bg-black py-20 text-white md:py-28">
+      <section data-chamber-in aria-labelledby="sol-quote" className="chamber-top bg-black py-20 text-white md:py-28">
         <div className="container-site flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <h2 id="sol-quote" className="text-h1 max-w-[18ch]">
             <span className="font-bold">Tell us</span> <span className="font-light">what you need.</span>

@@ -125,7 +125,7 @@ export function Header() {
           </Link>
 
           <div className="flex items-center gap-2">
-            <ButtonLink href={site.cta.href} className="hidden sm:inline-flex">
+            <ButtonLink href={site.cta.href} variant={scrolled ? "primary" : "outline"} className="hidden sm:inline-flex">
               {site.cta.label}
             </ButtonLink>
             <button

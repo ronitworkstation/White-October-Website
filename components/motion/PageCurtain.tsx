@@ -7,8 +7,8 @@ import { LogoMark } from "@/components/brand/LogoMark";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 
-const COVER = 0.55;
-const REVEAL = 0.6;
+const COVER = 0.4;
+const REVEAL = 0.45;
 
 // Page transition (Awwwards reference: BCG Building Design). A black panel with the site's curved top corners
 // rises over the page, the White October mark rises inside it and smiles, the route changes underneath, then
@@ -67,7 +67,7 @@ export function PageCurtain() {
         },
       });
       tl.fromTo(p, { yPercent: 0 }, { yPercent: -100, duration: COVER, ease })
-        .fromTo(m, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "expo.out" }, COVER * 0.45)
+        .fromTo(m, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "expo.out" }, COVER * 0.4)
         .add(
           () =>
             new Promise<void>((resolve) => {
@@ -84,7 +84,7 @@ export function PageCurtain() {
             }),
         )
         .addPause("+=0")
-        .to(m, { y: -40, opacity: 0, duration: 0.3, ease: "power2.in" })
+        .to(m, { y: -40, opacity: 0, duration: 0.2, ease: "power2.in" })
         .to(p, { yPercent: -200, duration: REVEAL, ease }, "<0.05");
     };
     document.addEventListener("click", onClick, true);

@@ -13,7 +13,7 @@ import { solutions } from "@/content/solutions";
 export function Footer() {
   const { contact } = site;
   return (
-    <footer className="relative mt-6 overflow-hidden md:mt-10">
+    <footer className="relative mt-6 overflow-hidden pb-14 md:mt-10 md:pb-0">
       <div className="chamber-top bg-black text-white">
         <div className="container-site pt-20 md:pt-28">
           <p className="text-[15px] text-grey-soft">Start a conversation</p>
