@@ -1,6 +1,5 @@
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { SectionMotion } from "@/components/motion/SectionMotion";
 import { MobileBar } from "@/components/site/MobileBar";
 import { PageCurtain } from "@/components/motion/PageCurtain";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
@@ -19,7 +18,6 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
       <Footer />
       <WhatsAppButton />
       <MobileBar />
-      <SectionMotion />
       <PageCurtain />
     </>
   );

@@ -4,7 +4,9 @@ import { usePathname } from "next/navigation";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 
-// Site-wide scroll transitions. Renders nothing; lives in the site layout and re-runs on every route change.
+// Site-wide scroll transitions. Renders nothing. Render it INSIDE each page, after the sections: its effect then runs
+// only once that page's tree has hydrated. (In the layout it ran first and GSAP wrote inline styles onto sections
+// React had not hydrated yet: a hydration mismatch.) Re-runs on every route change.
 //
 // 1. Chamber arrivals, every page: any element marked [data-chamber-in] (the curved sections) grows from 94% to full
 //    width as its top travels from the bottom of the screen to 55% up. Reason: sections read as panels stacking
@@ -66,11 +68,22 @@ export function SectionMotion() {
         ScrollTrigger.refresh();
       };
 
-      let raf = requestAnimationFrame(build);
+      // First page load: wait until React has hydrated the whole page. GSAP writes inline styles; touching a
+      // section before React hydrates it makes React see attributes the server never sent (hydration error).
+      // "load" fires after the page's scripts (and so hydration) have run; route changes after that are client-only.
+      let raf = 0;
+      let started = document.readyState === "complete";
       const schedule = () => {
+        if (!started) return;
         cancelAnimationFrame(raf);
         raf = requestAnimationFrame(build);
       };
+      const begin = () => {
+        started = true;
+        window.setTimeout(schedule, 0);
+      };
+      if (started) schedule();
+      else window.addEventListener("load", begin, { once: true });
       const observer = new MutationObserver(schedule);
       const main = document.getElementById("main");
       if (main) observer.observe(main, { childList: true, subtree: true });
@@ -82,6 +95,7 @@ export function SectionMotion() {
         cancelAnimationFrame(raf);
         observer.disconnect();
         window.removeEventListener("load", refresh);
+        window.removeEventListener("load", begin);
         ctx?.revert();
       };
     },

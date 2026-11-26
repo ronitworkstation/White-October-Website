@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
 import { SplitReveal } from "@/components/motion/SplitReveal";
+import { SectionMotion } from "@/components/motion/SectionMotion";
 import { Reveal } from "@/components/motion/Reveal";
 import { Plinth } from "@/components/ui/Plinth";
 import { site } from "@/content/site";
@@ -98,6 +99,7 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
           ))}
         </ul>
       </section>
+      <SectionMotion />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { SectionMotion } from "@/components/motion/SectionMotion";
 import { Hero } from "@/components/sections/Hero";
 import { Clients } from "@/components/sections/Clients";
 import { Statement } from "@/components/sections/Statement";
@@ -22,6 +23,7 @@ export default function Home() {
       <Process />
       <Experience />
       <Faq />
+      <SectionMotion />
     </div>
   );
 }
