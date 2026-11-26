@@ -1,12 +1,14 @@
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { site } from "@/content/site";
+import { FactsRow } from "./FactsRow";
 
-// One big centred statement on white. It rises over the dark client-logo chamber above it.
+// One big centred statement on white, then the row of real facts on a grey band. Rises over the dark
+// client-logo chamber above it.
 // Awaits Medhansh's approval (see content/site.ts whyUs).
 export function Statement() {
-  const { label, statement } = site.whyUs;
+  const { label, statement, facts } = site.whyUs;
   return (
-    <section data-chamber-in aria-labelledby="why-title" className="chamber-top relative -mt-8 bg-white pb-16 pt-24 md:-mt-16 md:pb-24 md:pt-36">
+    <section data-chamber-in aria-labelledby="why-title" className="chamber-top relative -mt-8 bg-white pt-24 md:-mt-16 md:pt-36">
       <div className="container-site text-center">
         <h2
           id="why-title"
@@ -25,6 +27,13 @@ export function Statement() {
           {statement.before} <strong className="font-bold">{statement.emphasis}</strong>
           {statement.after}
         </SplitReveal>
+      </div>
+
+      {/* The facts row on a grey band (reference: the handover "Why White October" panel, FactsRow from 76226a1) */}
+      <div className="mt-16 bg-panel py-16 md:mt-24 md:py-24">
+        <div className="container-site">
+          <FactsRow facts={facts} />
+        </div>
       </div>
     </section>
   );
