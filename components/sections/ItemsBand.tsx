@@ -52,7 +52,9 @@ export function ItemsBand() {
       <h2 id="items-title" className="sr-only">
         Everything we make
       </h2>
-      <p aria-hidden className="container-site mb-8 text-[13px] font-semibold uppercase tracking-[0.16em] md:mb-12">
+      {/* Centred label with the tilted WO square, same as "Why White October" */}
+      <p aria-hidden className="container-site mb-8 flex items-center justify-center gap-3 text-[13px] font-semibold uppercase tracking-[0.16em] md:mb-12">
+        <span className="inline-block size-2.5 -rotate-8 bg-orange" />
         Everything we make
       </p>
 
