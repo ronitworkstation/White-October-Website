@@ -100,7 +100,7 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
         <nav aria-labelledby="sol-others" className="container-site mt-12 md:mt-16">
           <h2
             id="sol-others"
-            className="flex items-center gap-3 border-t border-grey-soft pt-8 text-[13px] font-semibold uppercase tracking-[0.16em] md:pt-10"
+            className="flex items-center justify-center gap-3 border-t border-grey-soft pt-8 text-[13px] font-semibold uppercase tracking-[0.16em] md:pt-10"
           >
             <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
             Other solutions
