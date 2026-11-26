@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BackToTop } from "@/components/site/BackToTop";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { ArrowUpRight, WhatsappLogo } from "@phosphor-icons/react/ssr";
 import { LogoMark } from "@/components/brand/LogoMark";
@@ -87,11 +86,11 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Bottom bar: copyright on the left, back to top on the right */}
+          {/* Bottom bar: copyright on the left, social icons on the right */}
           <div className="mt-20 flex items-center justify-between gap-4 border-t border-line pt-6 text-[14px] text-grey-soft">
             <p>© {site.year} White October. Bengaluru, India.</p>
             <div className="flex shrink-0 items-center gap-2 md:gap-3">
-              {/* Social icons in their own brand colours (logos are the palette-lock exception), sized like BackToTop.
+              {/* Social icons in their own brand colours (logos are the palette-lock exception), 44px.
                   Instagram and Facebook link only once their URLs are filled in content/site.ts (awaiting Medhansh). */}
               {socials.map((s) =>
                 s.href ? (
@@ -102,7 +101,6 @@ export function Footer() {
                   <Image key={s.name} src={s.icon} alt="" width={44} height={44} className="size-11 shrink-0" />
                 ),
               )}
-              <BackToTop />
             </div>
           </div>
         </div>
