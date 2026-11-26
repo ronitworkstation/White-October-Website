@@ -5,11 +5,11 @@ import { Plinth } from "@/components/ui/Plinth";
 import { solutions } from "@/content/solutions";
 import { StackCards } from "./StackCards";
 
-// Solutions: four stacking cards (md up: each pins, the next slides over). Each links to its solution page.
+// Solutions: four stacking cards (md up: each pins, the next slides over). Each links to its solution page. Full-width white chamber with curved top over the grey statement panel.
 // The cover photo sits on a plinth.
 export function Solutions() {
   return (
-    <section id="solutions" aria-labelledby="solutions-title" className="container-site scroll-mt-24 bg-white pb-24 pt-8 [--stack-step:0px] [--stack-top:0px] md:pb-36 md:[--stack-step:28px] md:[--stack-top:16svh]">
+    <section data-chamber-in id="solutions" aria-labelledby="solutions-title" className="chamber-top relative -mt-8 scroll-mt-24 bg-white px-4 pb-24 pt-20 md:-mt-16 md:px-8 md:pt-28 lg:px-[7.5vw] [--stack-step:0px] [--stack-top:0px] md:pb-36 md:[--stack-step:28px] md:[--stack-top:16svh]">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         {/* Reason: marks the start of the pitch after the proof; words rise as the section arrives */}
         <SplitReveal as="h2" id="solutions-title" type="words" className="text-h1 font-bold text-ink">
