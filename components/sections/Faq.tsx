@@ -45,11 +45,11 @@ export function Faq() {
   return (
     <section data-chamber-in ref={root} id="faq" aria-labelledby="faq-title" className="chamber-top relative -mt-8 scroll-mt-0 bg-canvas py-20 md:-mt-16 md:py-28">
       <div className="container-site">
-        <p className="inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.16em] text-ink">
+        <p className="flex items-center justify-center gap-3 text-[13px] font-semibold uppercase tracking-[0.16em] text-ink">
           <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
           {label}
         </p>
-        <h2 id="faq-title" className="text-h1 mt-5 text-ink">
+        <h2 id="faq-title" className="text-h1 mt-5 text-center text-ink">
           <span className="font-bold">{title.bold}</span> <span className="font-light">{title.rest}</span>
         </h2>
 
