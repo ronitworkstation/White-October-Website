@@ -21,7 +21,10 @@ export function Footer() {
       {/* Phones: room under the cropped mark for the sticky MobileBar (black, so no white strip; none on /quote). */}
       <div className="chamber-top bg-black text-white max-md:[footer:has(~[data-mobile-bar])_&]:pb-[calc(50px+env(safe-area-inset-bottom))]">
         <div className="container-site pt-20 md:pt-28">
-          <p className="text-[15px] text-grey-soft">Start a conversation</p>
+          <p className="flex items-center gap-3 text-[15px] text-grey-soft">
+            <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
+            Start a conversation
+          </p>
           <a
             href={contact.phoneHref}
             className="group mt-3 inline-block border-b-2 border-line pb-3 font-display text-[44px] font-bold leading-none tracking-[0.01em] transition-colors hover:border-orange sm:text-[64px] md:text-[96px]"
@@ -42,7 +45,10 @@ export function Footer() {
 
           <div className="mt-20 grid gap-12 md:grid-cols-12 md:gap-8">
             <div className="md:col-span-5">
-              <h2 className="text-[15px] text-grey-soft">Visit the experience centre</h2>
+              <h2 className="flex items-center gap-3 text-[15px] text-grey-soft">
+            <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
+            Visit the experience centre
+          </h2>
               <address className="mt-4 text-[20px] not-italic leading-relaxed md:text-[22px]">
                 {contact.addressLines.map((l) => (
                   <span key={l} className="block">
@@ -65,8 +71,11 @@ export function Footer() {
                 </a>
               </p>
             </div>
-            <nav aria-label="Company" className="md:col-span-3 md:col-start-10">
-              <h2 className="text-[15px] text-grey-soft">White October</h2>
+            <nav aria-label="Quick links" className="md:col-span-3 md:col-start-10">
+              <h2 className="flex items-center gap-3 text-[15px] text-grey-soft">
+            <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
+            Quick links
+          </h2>
               <ul className="mt-2 text-[18px]">
                 {site.nav
                   .filter((n) => !("hasMenu" in n))
