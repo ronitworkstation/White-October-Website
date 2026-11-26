@@ -44,7 +44,7 @@ export function MobileBar() {
       </a>
       <a href={site.cta.href} tabIndex={shown ? 0 : -1} className={`${item} bg-orange text-ink`}>
         <ChatCircleText size={20} weight="bold" aria-hidden />
-        Quote
+        Book a Call
       </a>
     </div>
   );

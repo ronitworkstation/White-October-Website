@@ -47,6 +47,9 @@ export function SplitReveal({
         split = SplitText.create(el, {
           type: scrub || type === "words" ? "words" : "lines",
           mask: scrub ? undefined : type,
+          // Mask wrappers get "split-line-mask" / "split-word-mask" (globals.css gives them room for descenders).
+          linesClass: "split-line",
+          wordsClass: "split-word",
           autoSplit: true,
           aria: "auto",
           onSplit(self) {

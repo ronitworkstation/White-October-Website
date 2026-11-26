@@ -1,11 +1,8 @@
 import { getImageProps } from "next/image";
-import { ArrowRight, Phone } from "@phosphor-icons/react/ssr";
+import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/Button";
 import { SplitReveal } from "@/components/motion/SplitReveal";
-import Link from "next/link";
-import { Magnetic } from "@/components/motion/Magnetic";
 import { site } from "@/content/site";
-import { solutions } from "@/content/solutions";
 
 // Hero: the brochure hook over the handover photo, which runs up behind the see-through nav.
 // Two framings, chosen by screen orientation (art direction: only one photo downloads):
@@ -52,19 +49,8 @@ export function Hero() {
         <p data-hero-sub className="hero-rise-late mx-auto mt-4 max-w-[34ch] text-[17px] leading-snug text-grey-ink md:mt-5 md:text-[21px]">
           {hero.subline}
         </p>
-        {/* Proof under the promise: the same line the client logos carry (content/site.ts clients.eyebrow) */}
-        <p data-hero-proof className="hero-rise-late mx-auto mt-3 text-[14px] font-semibold text-ink md:text-[15px]">
-          {site.clients.eyebrow}
-        </p>
-        <div data-hero-cta className="hero-rise-late mt-6 flex flex-wrap justify-center gap-3 landscape:absolute landscape:bottom-8 landscape:right-6 landscape:mt-0 md:landscape:right-8 lg:landscape:bottom-10 lg:landscape:right-12">
-          {/* Call is the primary action: it answers the headline ("call us?") literally. Quote is the second. */}
-          <Magnetic>
-            <ButtonLink href={site.contact.phoneHref} size="lg">
-              <Phone size={18} weight="bold" aria-hidden />
-              Call {site.contact.phoneDisplay}
-            </ButtonLink>
-          </Magnetic>
-          <ButtonLink href={cta.href} variant="outline" size="lg">
+        <div data-hero-cta className="hero-rise-late mt-6 flex justify-center landscape:absolute landscape:bottom-8 landscape:right-6 landscape:mt-0 md:landscape:right-8 lg:landscape:bottom-10 lg:landscape:right-12">
+          <ButtonLink href={cta.href} size="lg">
             {cta.label}
             <ArrowRight size={18} weight="bold" className="transition-transform duration-300 group-hover/btn:translate-x-1" />
           </ButtonLink>
@@ -86,27 +72,6 @@ export function Hero() {
           />
         </picture>
       </div>
-
-      {/* The four solution families, laid over the bottom edge of the photo: the first thing a buyer can act on.
-          Landscape: bottom-left (the quote CTA holds bottom-right). Portrait: a 2x2 block at the bottom. */}
-      <nav
-        aria-label="Solutions"
-        data-hero-chips
-        className="hero-rise-late absolute inset-x-4 bottom-4 z-10 grid grid-cols-2 gap-2 md:inset-x-8 md:bottom-8 landscape:right-auto landscape:flex landscape:max-w-[calc(100%-560px)] landscape:flex-wrap lg:inset-x-12 lg:bottom-10"
-      >
-        {solutions.map((s, i) => (
-          <Link
-            key={s.slug}
-            href={`/solutions/${s.slug}`}
-            className="group/chip flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-3 text-[14px] font-semibold leading-tight text-ink transition-colors duration-300 hover:bg-ink hover:text-white md:text-[15px]"
-          >
-            <span aria-hidden className="font-display text-[13px] text-grey transition-colors group-hover/chip:text-orange">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            {s.titleBold} {s.titleRest}
-          </Link>
-        ))}
-      </nav>
     </section>
   );
 }

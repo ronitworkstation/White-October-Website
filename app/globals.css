@@ -199,3 +199,11 @@ html.lenis body {
 [data-motion="full"] [data-reveal="group"]:not([data-reveal-ready]) > * {
   opacity: 0;
 }
+
+/* SplitText line/word masks clip at the line box; with tight leading that cut the tails of j, y, p (change list 1.5).
+   Taller masks with a matching negative margin show the descenders without moving the layout. */
+.split-line-mask,
+.split-word-mask {
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}

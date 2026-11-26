@@ -36,7 +36,8 @@ export const site = {
     { label: "FAQ", href: "/#faq" },
   ],
 
-  cta: { label: "Send a Quote", href: "/quote" },
+  // Label per Aziz change list 1.4. Destination still /quote until Aziz picks A-D (form, tel:, calendar, WhatsApp).
+  cta: { label: "Book a Call", href: "/quote" },
 
   hero: {
     // Brochure page 1, word for word. Desktop breaks after "vendors"; "call us?" is the bold orange accent.

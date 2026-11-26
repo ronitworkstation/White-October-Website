@@ -43,8 +43,8 @@ export function SectionMotion() {
               defaults: { ease: "none" },
               scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: 0.6 },
             });
-            tl.to([q("#hero-title"), q("[data-hero-sub]"), q("[data-hero-proof]")], { y: -120, opacity: 0, duration: 0.55, stagger: 0.05 }, 0)
-              .to([q("[data-hero-cta]"), q("[data-hero-chips]")], { y: -40, opacity: 0, duration: 0.35 }, 0.1)
+            tl.to([q("#hero-title"), q("[data-hero-sub]")], { y: -120, opacity: 0, duration: 0.55, stagger: 0.05 }, 0)
+              .to(q("[data-hero-cta]"), { y: -40, opacity: 0, duration: 0.35 }, 0.1)
               .to(q("[data-hero-photo]"), { scale: 0.9, y: 60, transformOrigin: "50% 100%", duration: 1 }, 0);
           }
 
