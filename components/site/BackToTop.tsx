@@ -12,7 +12,7 @@ export function BackToTop() {
       type="button"
       onClick={() => (lenis ? lenis.scrollTo(0) : window.scrollTo(0, 0))}
       aria-label="Back to top"
-      className="grid size-11 place-items-center rounded-[12px] border-2 border-white text-white transition-colors duration-300 hover:bg-white hover:text-ink"
+      className="grid size-11 shrink-0 place-items-center rounded-[12px] border-2 border-white text-white transition-colors duration-300 hover:bg-white hover:text-ink"
     >
       <ArrowUp size={18} weight="bold" aria-hidden />
     </button>

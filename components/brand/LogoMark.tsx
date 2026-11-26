@@ -10,11 +10,13 @@ export function LogoMark({
   tone = "white",
   smileOnView = false,
   className = "",
+  style,
   title = "White October",
 }: {
   tone?: "white" | "black";
   smileOnView?: boolean;
   className?: string;
+  style?: React.CSSProperties;
   title?: string;
 }) {
   const ref = useRef<SVGSVGElement>(null);
@@ -34,7 +36,7 @@ export function LogoMark({
 
   const fill = tone === "white" ? "#ffffff" : "#0e0e0e";
   return (
-    <svg ref={ref} viewBox={MARK_VIEWBOX} role="img" aria-label={title} className={className}>
+    <svg ref={ref} viewBox={MARK_VIEWBOX} role="img" aria-label={title} className={className} style={style}>
       <path fill={fill} fillRule="evenodd" d={MARK_PATHS.square} />
       <path fill={fill} fillRule="evenodd" d={MARK_PATHS.ball} />
       {/* The ball has the smile cut out of it; this patch keeps it whole until the smile arrives. */}
