@@ -71,33 +71,56 @@ async function SolutionContent({ params }: { params: PageProps<"/solutions/[slug
         </Reveal>
       </section>
 
-      {/* Quote band */}
-      <section data-chamber-in aria-labelledby="sol-quote" className="chamber-top bg-black py-20 text-white md:py-28">
+      {/* Quote band + other families: one grey chamber (same panel grey as the home facts). It runs under the
+          footer's curved top (negative bottom margin = footer top margin + chamber radius), so the footer curves over grey with no gap. */}
+      <section
+        data-chamber-in
+        aria-labelledby="sol-quote"
+        className="chamber-top -mb-[calc(1.5rem+32px)] bg-panel pb-[calc(4rem+1.5rem+32px)] pt-16 text-ink md:-mb-[calc(2.5rem+48px)] md:pb-[calc(5rem+2.5rem+48px)] md:pt-24"
+      >
         <div className="container-site flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <h2 id="sol-quote" className="text-h1 max-w-[18ch]">
-            <span className="font-bold">Tell us</span> <span className="font-light">what you need.</span>
-          </h2>
-          <ButtonLink href={`${site.cta.href}?family=${s.slug}`} size="lg">
+          <div>
+            <h2 id="sol-quote" className="text-h1 max-w-[18ch]">
+              <span className="font-bold">Tell us</span> <span className="font-light">what you need.</span>
+            </h2>
+            <p className="mt-5 max-w-[40ch] text-[18px] leading-snug text-grey-ink md:text-[20px]">
+              We will take it from there. Prefer to talk? Call{" "}
+              <a href={site.contact.phoneHref} className="whitespace-nowrap border-b-2 border-orange font-semibold text-ink">
+                {site.contact.phoneDisplay}
+              </a>
+              .
+            </p>
+          </div>
+          <ButtonLink href={`${site.cta.href}?family=${s.slug}`} size="lg" className="self-start md:self-end">
             {site.cta.label}
             <ArrowRight size={18} weight="bold" />
           </ButtonLink>
         </div>
-      </section>
 
-      {/* Other families */}
-      <section aria-label="Other solutions" className="bg-black pb-20 text-white md:pb-28">
-        <ul className="container-site grid gap-3 border-t border-line pt-10 md:grid-cols-3">
-          {others.map((o) => (
-            <li key={o.slug}>
-              <Link href={`/solutions/${o.slug}`} className="group flex items-center justify-between rounded-card border-2 border-white p-5 transition-colors duration-300 hover:bg-white hover:text-ink">
-                <span className="text-[20px]">
-                  <span className="font-bold">{o.titleBold}</span> <span className="font-light">{o.titleRest}</span>
-                </span>
-                <ArrowRight size={20} weight="bold" className="transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <nav aria-labelledby="sol-others" className="container-site mt-12 md:mt-16">
+          <h2
+            id="sol-others"
+            className="flex items-center gap-3 border-t border-grey-soft pt-8 text-[13px] font-semibold uppercase tracking-[0.16em] md:pt-10"
+          >
+            <span aria-hidden className="inline-block size-2.5 -rotate-8 bg-orange" />
+            Other solutions
+          </h2>
+          <ul className="mt-6 grid gap-3 md:grid-cols-3">
+            {others.map((o) => (
+              <li key={o.slug}>
+                <Link
+                  href={`/solutions/${o.slug}`}
+                  className="group flex items-center justify-between rounded-card border-2 border-ink bg-white p-5 transition-colors duration-300 hover:bg-ink hover:text-white"
+                >
+                  <span className="text-[20px]">
+                    <span className="font-bold">{o.titleBold}</span> <span className="font-light">{o.titleRest}</span>
+                  </span>
+                  <ArrowRight size={20} weight="bold" className="transition-transform duration-300 group-hover:translate-x-1 reduced:transform-none" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </section>
       <SectionMotion />
     </div>
